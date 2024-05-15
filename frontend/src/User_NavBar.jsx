@@ -1,14 +1,20 @@
-import logo from './logo.svg';
-import React from 'react';
-//import './App.css';
-import Login from './Login';
+import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
 
 function User_NavBar() {
   return (
-    <div>
-        <h1>nav</h1>
-    </div>
-  );
+    <TabGroup>
+        <TabPanels>
+        <TabPanel>Content 1</TabPanel>
+        <TabPanel>Content 2</TabPanel>
+        <TabPanel>Content 3</TabPanel>
+        </TabPanels>
+        <TabList>
+        <Tab>Home</Tab>
+        <Tab>Reservation</Tab>
+        <Tab>History</Tab>
+        </TabList>
+    </TabGroup>
+  )
 }
 
 export default User_NavBar;
