@@ -2,12 +2,12 @@ import logo from './logo.svg';
 import React from 'react';
 import './App.css';
 import Login from './Login';
-import User_Layout from './User_Layout';
+import UserLayout from './UserLayout';
 
 function App() {
   return (
     <div>
-      <User_Layout></User_Layout>
+      <UserLayout></UserLayout>
     </div>
   );
 }
