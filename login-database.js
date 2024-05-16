@@ -1,17 +1,17 @@
 const express = require('express'); // Import the Express.js module
-const mysql = require('mysql'); // Import the MySQL module
+const mysql = require('mysql2'); // Import the MySQL module
 const path = require('path'); // Import the Path module
 
 const app = express(); // Create an instance of the Express application
-const port = 7000; // Define the port number on which the server will listen
+const port = 7001; // Define the port number on which the server will listen
 
 
 // Create MySQL connection
 const con = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '', // Change to your user password 
-    database: '' // Change to your database name
+    password: '19920531', // Change to your user password 
+    database: 'Naimuri' // Change to your database name
 });
 
 // Connect to MySQL database
@@ -31,7 +31,7 @@ app.use(express.static(path.join(__dirname, 'Public')));
 
 // Route to serve the login HTML page
 app.get('/login', (req, res) => {
-    res.sendFile(path.join(__dirname, 'login.html'));
+    res.sendFile(path.join(__dirname, 'index.js'));
 });
 
 // Serve the login form
