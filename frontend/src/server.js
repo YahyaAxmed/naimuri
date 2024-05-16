@@ -17,7 +17,7 @@ const connection = mysql.createConnection({
 app.use(bodyParser.json());
 
 // Route to handle user login
-app.post('/api/login', (req, res) => {
+app.post('/login', (req, res) => {
   const { email, password } = req.body;
 
   // Query to check user credentials
