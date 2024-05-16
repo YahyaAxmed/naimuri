@@ -1,16 +1,43 @@
-import logo from './logo.svg';
 import React from 'react';
-//import './App.css';
-import Login from './Login';
-import User_NavBar from './UserNavBar';
+import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 
-function UserLayout() {
+// Import your tab content components
+import UserDashboard from './UserDashboard';
+import UserReservaton from './UserReservation';
+import UserHistory from './UserHistory';
+import Setting from './Setting';
+
+function User_Layout() {
   return (
-    <div>
-        <h1>Main</h1>
-      <User_NavBar></User_NavBar>
-    </div>
+    <Router>
+      <div>
+        <button>Setting</button>
+        <TabGroup>
+        <TabPanels>
+          <TabPanel>
+          <Routes>
+          <Route path="/" element={<UserDashboard />} />
+          <Route path="/reservation" element={<UserReservaton />} />
+          <Route path="/history" element={<UserHistory />} />
+        </Routes>
+          </TabPanel>
+        </TabPanels>
+        <TabList>
+          <Tab>
+            <Link to="/">Home</Link>
+          </Tab>
+          <Tab>
+            <Link to="/reservation">Reservation</Link>
+          </Tab>
+          <Tab>
+            <Link to="/history">History</Link>
+          </Tab>
+        </TabList>
+        </TabGroup>
+      </div>
+    </Router>
   );
 }
 
-export default UserLayout;
+export default User_Layout;
