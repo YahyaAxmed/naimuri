@@ -2,10 +2,12 @@ import logo from './logo.svg';
 import React from 'react';
 //import './App.css';
 
-function Setting() {
+function BookingDoW() {
   return (
-    <h1>setting</h1>
+    <div>
+        MonDay
+    </div>
   );
 }
 
-export default Setting;
+export default BookingDoW;

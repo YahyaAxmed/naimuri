@@ -6,13 +6,7 @@ import UserLayout from './UserLayout';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/admin" element={<AdminLayout />} />
-        <Route path="/user" element={<UserLayout />} />
-      </Routes>
-    </Router>
+    <UserLayout></UserLayout>
   );
 }
 

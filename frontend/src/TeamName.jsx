@@ -2,10 +2,12 @@ import logo from './logo.svg';
 import React from 'react';
 //import './App.css';
 
-function Setting() {
+function TeamName() {
   return (
-    <h1>setting</h1>
+    <div>
+        Team A
+    </div>
   );
 }
 
-export default Setting;
+export default TeamName;

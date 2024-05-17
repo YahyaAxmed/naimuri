@@ -2,10 +2,12 @@ import logo from './logo.svg';
 import React from 'react';
 //import './App.css';
 
-function Setting() {
+function BookedRoom() {
   return (
-    <h1>setting</h1>
+    <div>
+        Room 1
+    </div>
   );
 }
 
-export default Setting;
+export default BookedRoom;
