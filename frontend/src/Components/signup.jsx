@@ -12,7 +12,7 @@ function Signup() {
         event.preventDefault();
 
         try {
-            const response = await fetch('http://localhost:7000/signup', {
+            const response = await fetch('http://localhost:7001/signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

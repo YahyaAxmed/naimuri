@@ -4,14 +4,14 @@ const path = require('path');
 const cors = require('cors');
 
 const app = express();
-const port = 7000;
+const port = 7001;
 
 // Create MySQL connection
 const con = mysql.createConnection({
     host: 'localhost',
     user: 'root',
 
-    password: 'semar14', // Change to your user password 
+    password: '19920531', // Change to your user password 
     database: 'naimuri' // Change to your database name
 });
 
