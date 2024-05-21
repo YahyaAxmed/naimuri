@@ -12,6 +12,9 @@ code {
     monospace;
 }
 */
+div {
+  display: inline-block;
+}
 @tailwind components;
 @tailwind utilities;
 
