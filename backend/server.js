@@ -1,16 +1,18 @@
-const express = require('express'); // Import the Express.js module
-const mysql = require('mysql2'); // Import the MySQL module
-const path = require('path'); // Import the Path module
+const express = require('express');
+const mysql = require('mysql2');
+const path = require('path');
+const cors = require('cors');
 
-const app = express(); // Create an instance of the Express application
-const port = 7001; // Define the port number on which the server will listen
+const app = express();
+const port = 7001;
 
+app.use(cors());
 
 // Create MySQL connection
 const con = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '19920531', // Change to your user password 
+    password: '', // Change to your user password 
     database: 'Naimuri' // Change to your database name
 });
 
@@ -23,7 +25,7 @@ con.connect((err) => {
     console.log('Connected to MySQL database');
 });
 
-// Set up middleware to parse request body
+// Middleware to parse request body
 app.use(express.json());
 
 // Serve static files from the "public" directory
@@ -34,38 +36,31 @@ app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, 'Login.jsx'));
 });
 
-// Serve the login form
-app.post('/login', (req, res) => {
-    try {
-        const { email, password } = req.body;
-        console.log('Received login request:', { email, password });
+// Route to retrieve reservation by ID
+app.get('/api/reservation/:reservationId', (req, res) => {
+    const id = req.params.reservationId;
+    console.log('Received request for /api/reservation/' + id);
 
-        let sql = `select email, password from user where email ='${email}' and password = '${password}'`;
-        // Execute the SQL query
-        con.query(sql, function(err, results) {
-            if (err) {
-                throw err;
-            }
-            console.log('Query successful');
-            console.log(results);
+    const query = 'SELECT r.id, DATE_FORMAT(booking_date, "%W, %d-%M") AS booking_date, checked_in, attendees, equipment_id, e.name as equipmentName, team_id, t.name as teamName FROM reservation as r LEFT JOIN equipment as e ON e.id = r.equipment_id LEFT JOIN team as t ON t.id = team_id WHERE r.id = ? ';
+    con.query(query, [id], (error, results) => {
+        if (error) {
+            console.error('Error:', error);
+            res.status(500).json({ error: 'An internal server error occurred' });
+            return;
+        }
 
-            // Check if any rows were returned
-            if (results.length > 0) {
-                console.log('Welcome');
-            } else {
-                console.log('No user found with the specified login credentials.');
-            }
-            // Send a successful response to the client
-            res.sendStatus(200);
-        });
-    } catch (error) {
-        console.error('Error:', error);
-        // Send an error response to the client
-        res.status(500).send('Internal Server Error');
-    }
+        if (results.length > 0) {
+            const reservation = results[0];
+            console.log('Sending response:', reservation);
+            res.json(reservation);
+        } else {
+            console.log('No reservations found');
+            res.status(404).json({ error: 'No reservations found' });
+        }
+    });
 });
 
 // Start the server
 app.listen(port, () => {
-    console.log(`Server is listening on port ${port}/login'`);
+    console.log(`Server is listening on port ${port}`);
 });

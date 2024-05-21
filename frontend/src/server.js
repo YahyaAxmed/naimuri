@@ -1,20 +1,29 @@
 const express = require('express');
 const mysql = require('mysql2');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const app = express();
-const port = 5050;
+const port = 3000;
 
 // Create a MySQL connection
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: '19920531',
+  password: '',
   database: 'naimuri'
 });
 
 // Middleware to parse JSON
 app.use(bodyParser.json());
+app.use(cors());
+
+// Error handling middleware
+// app.use((err, req, res, next) => {
+//   console.error('Error:', err);
+//   res.status(err.status || 500).json({ error: err.message || 'Internal server error' });
+// });
+
 
 // Route to handle user login
 app.post('/api/login', (req, res) => {
@@ -37,5 +46,7 @@ app.post('/api/login', (req, res) => {
     }
   });
 });
+
+
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
