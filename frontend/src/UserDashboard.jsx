@@ -10,8 +10,8 @@ function UserDashboard() {
       <div className="absolute top-[81px] left-[43px] [font-family:'Inter-Black',Helvetica] font-black text-black text-[40px] tracking-[0] leading-[normal] whitespace-nowrap">
         DASHBOARD
       </div>
-      <div>
-        <UserDashboardContainer className="!absolute !left-[45px] !top-[155px]"/>
+      <div className="!absolute !left-[35px] !top-[155px]">
+        <UserDashboardContainer/>
       </div>
       </div>
     </div>

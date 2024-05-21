@@ -10,6 +10,7 @@ import Setting from './Setting';
 
 function UserLayout() {
   return (
+    <div className="bg-white flex flex-row justify-center w-full">
     <Router>
         <TabGroup>
           <TabPanels>
@@ -38,6 +39,7 @@ function UserLayout() {
           </TabList>
         </TabGroup>
     </Router>
+    </div>
   );
 }
 

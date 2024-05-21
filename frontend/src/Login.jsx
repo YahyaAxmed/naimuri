@@ -1,48 +1,39 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import React from "react";
+import { CheckboxDefault } from "./CheckBox";
 
-function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const navigate = useNavigate();
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      const response = await axios.post('/api/login', { email, password });
-      const { layout } = response.data;
-
-      if (layout === 'admin') {
-        navigate('/admin');
-      } else {
-        navigate('/user');
-      }
-    } catch (error) {
-      console.error('Login failed:', error.response.data.error);
-      setError(error.response.data.error);
-    }
-  };
-
-  return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Email:</label>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+function Login(){
+    return (
+        <div className="bg-white flex flex-row justify-center w-full">
+            <div className="bg-white w-[430px] h-[932px] relative">
+                <div className="top-[259px] left-[40px] [font-family:'Inter-ExtraBold',Helvetica] font-extrabold text-[64px] absolute text-black tracking-[0] leading-[normal]">
+                    Login
+                </div>
+                <div className="w-[342px] h-[198px] top-[360px] left-[44px] bg-[#ededed] shadow-[0px_4px_4px_#00000040] absolute rounded-[10px]">
+                    <div className="absolute top-[90px] left-[144px] [font-family:'Inter-Light',Helvetica] font-light text-[#3781b6] text-[14px] tracking-[0] leading-[normal]">
+                        Forget Password
+                    </div>
+                    <div className="absolute top-[90px] left-[36px] [font-family:'Inter-Light',Helvetica] font-light text-black text-[14px] tracking-[0] leading-[normal]">
+                        Remember Me
+                    </div>
+                    <div className="absolute top-[22px] left-[17px] [font-family:'Inter-Light',Helvetica] font-light text-black text-[20px] tracking-[0] leading-[normal] whitespace-nowrap">
+                        USERNAME:
+                    </div>
+                    <div className="absolute top-[57px] left-[16px] [font-family:'Inter-Light',Helvetica] font-light text-black text-[20px] tracking-[0] leading-[normal] whitespace-nowrap">
+                        PASSWORD:
+                    </div>
+                    <div className="w-[185px] h-[24px] top-[23px] left-[144px] absolute bg-white" />
+                    <div className="w-[185px] h-[24px] top-[58px] left-[144px] absolute bg-white" />
+                    <div className="w-[110px] h-[31px] top-[117px] left-[144px] absolute rounded-[10px]">
+                        <div className="w-[110px] h-[31px] top-0 left-0 rounded-[10px] shadow-[0px_4px_4px_#00000040] absolute bg-white" />
+                        <div className="top-[3px] left-[24px] [text-shadow:0px_4px_4px_#00000040] [font-family:'Inter-Light',Helvetica] font-light text-[20px] whitespace-nowrap absolute text-black tracking-[0] leading-[normal]">
+                            LOGIN
+                        </div>
+                    </div>
+                    <CheckboxDefault className="!absolute !left-[17px] !top-[92px]" stateProp="default" />
+                </div>
+            </div>
         </div>
-        <div>
-          <label>Password:</label>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        </div>
-        <button type="submit">Login</button>
-        {error && <div>{error}</div>}
-      </form>
-    </div>
-  );
-}
+    );
+};
 
 export default Login;
