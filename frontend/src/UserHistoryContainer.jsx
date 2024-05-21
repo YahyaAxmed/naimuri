@@ -8,6 +8,7 @@ import BookedRoom from './BookedRoom';
 import BookingId from './BookingId';
 import { Button } from '@headlessui/react'
 import BookingStatus from './BookingStatus';
+import BookingEquipment from './BookingEquipment';
 
 function UserHistoryContainer() {
   return (
@@ -29,8 +30,11 @@ function UserHistoryContainer() {
                 <div className="absolute top-[16px] left-[19px] [font-family:'Inter-Black',Helvetica] font-black text-black text-[40px] tracking-[0] leading-[normal] whitespace-nowrap">
                     <BookingDate></BookingDate>
                 </div>
-                <div className="absolute top-[110px] left-[19px] [font-family:'Inter-Light',Helvetica] font-light text-black text-[20px] tracking-[0] leading-[normal] whitespace-nowrap">
-                    Total Equipment: <BookingStatus></BookingStatus>
+                <div className="absolute top-[115px] left-[19px] [font-family:'Inter-Light',Helvetica] font-light text-black text-[20px] tracking-[0] leading-[normal] whitespace-nowrap">
+                    Total Equipment: <BookingEquipment></BookingEquipment>
+                </div>
+                <div className="absolute top-[150px] left-[19px] [font-family:'Inter-Light',Helvetica] font-light text-black text-[20px] tracking-[0] leading-[normal] whitespace-nowrap">
+                    Total Tester: <BookingEquipment></BookingEquipment>
                 </div>
                 
         </div>
