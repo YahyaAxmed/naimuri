@@ -1,7 +1,3 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-
 document.addEventListener('DOMContentLoaded', function() {
     // Get the form and the password reveal checkbox
     const form = document.getElementById('loginForm');
@@ -59,26 +55,4 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-function Login() {
-  return (
-    <div>
-      <h2>Login</h2>
-      <form action="/login" method="post" id="loginForm">
-          <label for='email'>Email:
-          <input type="text" id="email" name="email"/>
-          </label>
-        <div>
-          <label for="pass">Password:
-          <input type="password" id="pass" name="password"/>
-          <span id="show-text">Show</span>
-          <input id="show" type="checkbox"/>
-          </label>
-          <label for="remember">Remember me<input type="radio"/></label> 
-        </div>
-        <button type="submit">Login</button>
-      </form>
-    </div>
-  );
-}
 
-export default Login;
