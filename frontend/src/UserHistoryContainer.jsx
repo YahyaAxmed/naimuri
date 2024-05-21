@@ -24,7 +24,7 @@ function UserHistoryContainer() {
                     <BookingDoW></BookingDoW>
                 </div>
                 <div className="absolute top-[16px] left-[44px] [font-family:'Inter-Black',Helvetica] font-black text-[#ff0000] text-[40px] tracking-[0] leading-[normal] whitespace-nowrap">
-                JAN
+                    <BookingDate></BookingDate>
                 </div>
                 <div className="absolute top-[16px] left-[19px] [font-family:'Inter-Black',Helvetica] font-black text-black text-[40px] tracking-[0] leading-[normal] whitespace-nowrap">
                 1
