@@ -33,7 +33,7 @@ function UserBookingDate() {
 
   return (
     <div>
-      <p>{bookingDate}</p>
+      {bookingDate}
     </div>
   );
 }
