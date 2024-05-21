@@ -17,9 +17,11 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": " cd ../backend && node server.js",
+    "client": "react-scripts start",
     "test": "react-scripts test",
+    "build": "react-scripts build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -39,5 +41,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
   }
 }
