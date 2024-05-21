@@ -27,17 +27,12 @@ function UserHistoryContainer() {
                     <BookingDate></BookingDate>
                 </div>
                 <div className="absolute top-[16px] left-[19px] [font-family:'Inter-Black',Helvetica] font-black text-black text-[40px] tracking-[0] leading-[normal] whitespace-nowrap">
-                1
+                    <BookingDate></BookingDate>
                 </div>
-                <Button
-                className="!h-[36px] !rounded-[10px] !shadow-[0px_4px_4px_#00000040] !flex !absolute !left-[100px] !bg-white !w-[144px] !top-[114px]"
-                content="text"
-                divClassName="!text-black"
-                size="normal"
-                state="default"
-                text="Details"
-                type="primary"
-                />
+                <div className="absolute top-[110px] left-[19px] [font-family:'Inter-Light',Helvetica] font-light text-black text-[20px] tracking-[0] leading-[normal] whitespace-nowrap">
+                    Total Equipment: <BookingStatus></BookingStatus>
+                </div>
+                
         </div>
     </div>
   );
