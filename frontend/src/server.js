@@ -23,6 +23,7 @@ app.post('/login', (req, res) => {
   // Query to check user credentials
   const query = 'SELECT * FROM users WHERE email = ? AND password = ?';
   connection.query(query, [email, password], (error, results) => {
+
     if (error) {
       console.error('Error:', error);
       res.status(500).json({ error: 'An internal server error occurred' });
@@ -31,6 +32,7 @@ app.post('/login', (req, res) => {
 
     if (results.length > 0) {
       const user = results[0];
+
       res.json(user);
     } else {
       res.status(401).json({ error: 'Invalid email or password' });
