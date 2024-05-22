@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-function UserBookingDate() {
+function BookingDoW() {
   const [bookingDate, setBookingDate] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -38,4 +38,4 @@ function UserBookingDate() {
   );
 }
 
-export default UserBookingDate;
+export default BookingDoW;
