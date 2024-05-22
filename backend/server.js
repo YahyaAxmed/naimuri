@@ -9,7 +9,6 @@ const port = 7001;
 const con = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-
     password: '19920531', // Change to your user password 
     database: 'naimuri' // Change to your database name
 });
