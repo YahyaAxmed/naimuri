@@ -7,13 +7,13 @@ import UserLayout from './UserLayout';
 
 function App() {
   return (
-    <div className="App">
-       <h1>Login</h1>
-       {/* <h1>Signup</h1> */}
-       <Login />
-        {/* <Signup /> */}
-    </div>
-    //<UserLayout></UserLayout>
+    // <div className="App">
+    //    <h1>Login</h1>
+    //    {/* <h1>Signup</h1> */}
+    //    <Login />
+    //     {/* <Signup /> */}
+    // </div>
+    <UserLayout></UserLayout>
   );
 }
 

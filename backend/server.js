@@ -61,8 +61,8 @@ app.post('/login', (req, res) => {
     }
   });
   
-  app.post('/signup', (req, res) => {
-      try {
+app.post('/signup', (req, res) => {
+    try {
         const { firstname, lastname, team, email, password } = req.body; // Extract form data from request body
     
         let sqlteam = `SELECT id FROM team where name = '${team}';`; // Query to select the last user_id
