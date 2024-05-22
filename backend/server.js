@@ -2,10 +2,11 @@ const express = require('express');
 const mysql = require('mysql2');
 const path = require('path');
 const cors = require('cors');
-
 const app = express();
 const port = 7001;
 
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
 app.use(cors());
 
 // Create MySQL connection
@@ -41,11 +42,14 @@ app.get('/api/reservation/:reservationId', (req, res) => {
     const id = req.params.reservationId;
     console.log('Received request for /api/reservation/' + id);
 
-    const query = 'SELECT r.id, DATE_FORMAT(booking_date, "%W, %d-%M") AS booking_date, checked_in, attendees, equipment_id, e.name as equipmentName, team_id, t.name as teamName FROM reservation as r LEFT JOIN equipment as e ON e.id = r.equipment_id LEFT JOIN team as t ON t.id = team_id WHERE r.id = ? ';
+    const query = `SELECT r.id, DATE_FORMAT(booking_date, "%W, %d-%M") AS booking_date,equipments_booked, checked_in, attendees,team_id, t.name as teamName 
+                   FROM reservation as r 
+                   LEFT JOIN team as t ON t.id = team_id 
+                   WHERE r.id = ?`;
     con.query(query, [id], (error, results) => {
         if (error) {
             console.error('Error:', error);
-            res.status(500).json({ error: 'An internal server error occurred' });
+            res.status(500).json({ error: 'An internal server error occurred', details: error });
             return;
         }
 
@@ -60,6 +64,56 @@ app.get('/api/reservation/:reservationId', (req, res) => {
     });
 });
 
+
+// Route to retrieve equipment data
+app.get('/api/equipment', (req, res) => {
+    const query = 'SELECT * FROM equipment';
+    con.query(query, (error, results) => {
+        if (error) {
+            console.error('Error:', error);
+            res.status(500).json({ error: 'An internal server error occurred' });
+            return;
+        }
+
+        res.json(results);
+        
+    });
+});
+
+// Route to retrieve room data
+app.get('/api/room', (req, res) => {
+    const query = 'SELECT * FROM room';
+    con.query(query, (error, results) => {
+        if (error) {
+            console.error('Error:', error);
+            res.status(500).json({ error: 'An internal server error occurred' });
+            return;
+        }
+
+        res.json(results);
+        
+    });
+});
+
+// New endpoint to handle reservation creation
+app.post('/api/reservation', (req, res) => {
+    const { equipments_booked, booking_date, attendees, room_id, team_id } = req.body;
+    
+    if (!equipments_booked || !booking_date || !attendees || !room_id || !team_id) {
+      return res.status(400).json({ error: 'All fields are required' });
+    }
+  
+    const query = 'INSERT INTO reservation (equipments_booked, team_id, room_id, booking_date, checked_in, Attendees) VALUES (?, ?, ?, ?, 0, ?)';
+    con.query(query, [equipments_booked, team_id, room_id, booking_date, attendees], (error, results) => {
+      if (error) {
+        console.error('Database query error:', error);
+        res.status(500).json({ error: 'An internal server error occurred' });
+      } else {
+        res.status(201).json({ message: 'Reservation created successfully', reservationId: results.insertId });
+      }
+    });
+  });
+  
 // Start the server
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}`);

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 21, 2024 at 11:21 AM
+-- Generation Time: May 22, 2024 at 10:56 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -56,7 +56,7 @@ INSERT INTO `equipment` (`id`, `name`, `tester_required`) VALUES
 
 CREATE TABLE `reservation` (
   `id` int(11) UNSIGNED NOT NULL,
-  `equipment_id` int(11) UNSIGNED NOT NULL,
+  `equipments_booked` varchar(255) DEFAULT NULL,
   `team_id` int(11) UNSIGNED NOT NULL,
   `room_id` int(11) UNSIGNED NOT NULL,
   `booking_date` datetime NOT NULL,
@@ -68,13 +68,16 @@ CREATE TABLE `reservation` (
 -- Dumping data for table `reservation`
 --
 
-INSERT INTO `reservation` (`id`, `equipment_id`, `team_id`, `room_id`, `booking_date`, `checked_in`, `attendees`) VALUES
-(20500, 102, 1, 1, '2024-05-14 22:43:05', 1, 5),
-(20501, 105, 2, 3, '2024-05-14 22:43:05', 1, 4),
-(20502, 104, 3, 2, '2024-05-14 22:43:51', 1, 6),
-(20503, 101, 3, 2, '2024-05-14 22:43:51', 0, 5),
-(20504, 102, 2, 2, '2024-05-15 12:37:51', 0, 4),
-(20505, 101, 1, 3, '2024-05-15 12:37:51', 1, 3);
+INSERT INTO `reservation` (`id`, `equipments_booked`, `team_id`, `room_id`, `booking_date`, `checked_in`, `attendees`) VALUES
+(20500, 'Phone + Network', 1, 1, '2024-05-14 22:43:05', 1, 5),
+(20501, 'CPU', 2, 3, '2024-05-14 22:43:05', 1, 4),
+(20502, 'Desktop + Keyboard', 3, 2, '2024-05-14 22:43:51', 1, 6),
+(20503, 'Mobile Phone', 3, 2, '2024-05-14 22:43:51', 0, 5),
+(20504, 'MacBook', 2, 2, '2024-05-15 12:37:51', 0, 4),
+(20505, 'HeadPhone', 1, 3, '2024-05-15 12:37:51', 1, 3),
+(20506, 'Network+ E-white board', 1, 3, '2024-05-22 20:39:58', 0, 1),
+(20507, 'Apple TV+ Video Conference', 2, 3, '2024-05-22 20:39:58', 0, 1),
+(20508, 'Apple TV+ Video Conference', 2, 3, '2024-05-22 20:39:58', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -178,8 +181,7 @@ ALTER TABLE `equipment`
 ALTER TABLE `reservation`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_reservation_team_id` (`team_id`),
-  ADD KEY `fk_reservation_room_id` (`room_id`),
-  ADD KEY `fk_reservation_equipment_id` (`equipment_id`) USING BTREE;
+  ADD KEY `fk_reservation_room_id` (`room_id`) USING BTREE;
 
 --
 -- Indexes for table `room`
@@ -214,7 +216,7 @@ ALTER TABLE `equipment`
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20506;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20509;
 
 --
 -- AUTO_INCREMENT for table `room`
@@ -243,7 +245,6 @@ ALTER TABLE `user`
 --
 ALTER TABLE `reservation`
   ADD CONSTRAINT `fk_reservation_room_id` FOREIGN KEY (`room_id`) REFERENCES `room` (`id`),
-  ADD CONSTRAINT `fk_reservation_slot_id` FOREIGN KEY (`equipment_id`) REFERENCES `equipment` (`id`),
   ADD CONSTRAINT `fk_reservation_team_id` FOREIGN KEY (`team_id`) REFERENCES `team` (`id`);
 
 --

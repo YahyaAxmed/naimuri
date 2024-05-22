@@ -14,7 +14,7 @@ function  UserBookingEquipment() {
         return response.json();
       })
       .then((data) => {
-        setbookingEquipment(data.equipmentName);
+        setbookingEquipment(data.equipments_booked);
         setLoading(false);
       })
       .catch((error) => {
@@ -40,4 +40,3 @@ function  UserBookingEquipment() {
 }
 
 export default UserBookingEquipment;
-;
