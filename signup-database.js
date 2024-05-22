@@ -1,67 +1,38 @@
-const mysql = require('mysql2');
-const express = require('express');
-const path = require('path');
-const cors = require('cors');
-const app = express();
-const port = 7001;
+const express = require('express'); // Import the Express.js module
+const mysql = require('mysql'); // Import the MySQL module
+const path = require('path'); // Import the Path module
+
+const app = express(); // Create an instance of the Express application
+const port = 5000; // Define the port number on which the server will listen
 
 // Create MySQL connection
 const con = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-
-    password: '19920531', // Change to your user password 
-    database: 'naimuri' // Change to your database name
+    password: '', // Change to your user password 
+    database: '' // Change to your database name
 });
 
-// Connect to MySQL database
+// Connect to MySQL
 con.connect((err) => {
     if (err) {
-        console.error('Error connecting to MySQL database:', err);
-        return;
+        throw err;
     }
-    console.log('Connected to MySQL database');
+    console.log('Connected to MySQL database'); // Log a message when connected successfully
 });
 
-// Set up middleware to parse request body
-
-app.use(cors());
+// Add middleware to parse JSON requests
 app.use(express.json());
-// Serve the login form
-app.post('/login', (req, res) => {
-    try {
-        const { email, password } = req.body;
 
-        let sql = `SELECT u.email, u.password, ut.user_type_name
-        FROM user u
-        INNER JOIN user_type ut ON u.user_type_id = ut.user_type_id
-        WHERE u.email = '${email}' AND u.password = '${password}';`;
-        // Execute the SQL query
-        con.query(sql, function(err, results) {
-            if (err) {
-                throw err;
-            }
-            console.log('Query successful');
-            console.log(results);
+// Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, 'Public')));
 
-            // Check if any rows were returned
-            if (results.length > 0) {
-
-                const userType = results[0].user_type_name; // Extract the user type
-                console.log('Welcome');
-                res.json({ success: true, userType: userType ,message: ' Login Susseccful' }); // Send success response
-              } else {
-                console.log('No user found with the specified login credentials.');
-                res.json({ success: false, message: 'Invalid credentials' }); // Send failure response
-              }
-        });
-    } catch (error) {
-        console.error('Error:', error);
-        // Send an error response to the client
-        res.status(500).send('Internal Server Error');
-    }
+// Route to serve the signup HTML page
+app.get('/signup', (req, res) => {
+    res.sendFile(path.join(__dirname, 'signup.html')); // Send the signup.html file when root route is accessed
 });
 
+// Route handler to handle form submission
 app.post('/signup', (req, res) => {
     try {
         const { firstname, lastname, usertype, team, email, password } = req.body; // Extract form data from request body
@@ -114,7 +85,6 @@ app.post('/signup', (req, res) => {
 
 // Start the server
 app.listen(port, () => {
-    console.log(`Server is listening at http://localhost:${port}/login`);
-    console.log(`Server is listening at http://localhost:${port}/signup`);
+    console.log(`Server listening at http://localhost:${port}/signup`); // Log a message when the server starts listening
 });
 

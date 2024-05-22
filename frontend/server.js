@@ -3,7 +3,7 @@ const mysql = require('mysql2');
 const bodyParser = require('body-parser');
 
 const app = express();
-const port = 5050;
+const port = 5000;
 
 // Create a MySQL connection
 const connection = mysql.createConnection({
@@ -17,13 +17,12 @@ const connection = mysql.createConnection({
 app.use(bodyParser.json());
 
 // Route to handle user login
-app.post('/login', (req, res) => {
+app.post('/api/login', (req, res) => {
   const { email, password } = req.body;
 
   // Query to check user credentials
   const query = 'SELECT * FROM users WHERE email = ? AND password = ?';
   connection.query(query, [email, password], (error, results) => {
-
     if (error) {
       console.error('Error:', error);
       res.status(500).json({ error: 'An internal server error occurred' });
@@ -32,7 +31,6 @@ app.post('/login', (req, res) => {
 
     if (results.length > 0) {
       const user = results[0];
-
       res.json(user);
     } else {
       res.status(401).json({ error: 'Invalid email or password' });
