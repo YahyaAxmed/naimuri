@@ -7,6 +7,7 @@ import UserDashboard from './UserDashboard';
 import UserReservaton from './UserReservation';
 import UserHistory from './UserHistory';
 import Setting from './Setting';
+import UserNav from './UserNav';
 
 function UserLayout() {
   return (
@@ -15,27 +16,14 @@ function UserLayout() {
           <TabPanels>
             <TabPanel>
               <Routes>
-                <Route path="/*" element={<UserDashboard />} />
+                <Route path="/" element={<UserDashboard />} />
                 <Route path="/reservation" element={<UserReservaton />} />
                 <Route path="/history" element={<UserHistory />} />
                 <Route path="/setting" element={<Setting />} />
               </Routes>
             </TabPanel>
           </TabPanels>
-          <TabList>
-            <Tab>
-              <Link to="/">Home</Link>
-            </Tab>
-            <Tab>
-              <Link to="/reservation">Reservation</Link>
-            </Tab>
-            <Tab>
-              <Link to="/history">History</Link>
-            </Tab>
-            <Tab>
-              <Link to="/setting">Setting</Link>
-            </Tab>
-          </TabList>
+          <UserNav></UserNav>
         </TabGroup>
     </div>
   );
