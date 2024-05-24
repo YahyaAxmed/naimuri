@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, Routes, Route, BrowserRouter as Router, useNavigate } from 'react-router-dom';
+import { Link, Routes, Route} from 'react-router-dom';
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
 
 // Import your tab content components
@@ -11,12 +11,11 @@ import Setting from './Setting';
 function UserLayout() {
   return (
     <div className="bg-white flex flex-row justify-center w-full">
-    <Router>
         <TabGroup>
           <TabPanels>
             <TabPanel>
               <Routes>
-                <Route path="/" element={<UserDashboard />} />
+                <Route path="/*" element={<UserDashboard />} />
                 <Route path="/reservation" element={<UserReservaton />} />
                 <Route path="/history" element={<UserHistory />} />
                 <Route path="/setting" element={<Setting />} />
@@ -38,7 +37,6 @@ function UserLayout() {
             </Tab>
           </TabList>
         </TabGroup>
-    </Router>
     </div>
   );
 }

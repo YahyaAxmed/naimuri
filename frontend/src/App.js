@@ -11,7 +11,6 @@ import NotFound from './NotFound';
 function App() {
   return (
     <div className='App'>
-    <Router>
       <Routes>
         <Route path="/admin" element={<AdminLayout />} />
         <Route path="/user" element={<UserLayout />} />
@@ -19,7 +18,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </Router>
+    {/* <UserLayout></UserLayout> */}
     </div>
   );
 }
