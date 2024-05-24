@@ -1,83 +1,68 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import './App.css';
+import {useNavigate} from 'react-router-dom'
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Get the form and the password reveal checkbox
-    const form = document.getElementById('loginForm');
-    const reveal = document.getElementById('show');
-    const changeText = document.getElementById('show-text'); // Get the span element to change text
+function Login() {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate();
 
-    // Add an event listener for form submission
-    form.addEventListener('submit', async (event) => {
-        event.preventDefault(); // Prevent the default form submission behavior
-        await loginSubmit(); // Call the loginSubmit function
-    });
-
-    // Define the loginSubmit function
-    async function loginSubmit() {
-        // Get the email and password values from the form
-        const mailValue = document.getElementById('email').value;
-        const passValue = document.getElementById('pass').value;
-        console.log(mailValue);
-        console.log(passValue);
+    const handleSubmit = async (event) => {
+        event.preventDefault();
 
         try {
-            // Send a POST request to the server with email and password data
-            const response = await fetch('http://localhost:7000/login', {
+            const response = await fetch('http://localhost:7001/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({
-                    email: mailValue,
-                    password: passValue
-                })
+                body: JSON.stringify({ email, password })
             });
-            
-            // Check if the response is not ok
-            if (!response.ok) {
-                throw new Error('testing new error');
-            }
-            console.log('Form submitted successfully:', response);
+            const result = await response.json();
+
+            if (result.success) {
+                console.log('Login successful:', result);
+                if (result.userType === 1) {
+                 navigate('/admin');
+                } else {
+                    navigate('/user');
+                }
+                }
+             else {
+                console.error('Login failed:', result.message);
+                alert('Invalid credentials. Please try again.');
+             }
         } catch (error) {
-            console.error('fetch error testing catch', error);
+            console.error('Error submitting form:', error);
         }
-    }
+    };
 
-    // Add an event listener for the password reveal checkbox
-    reveal.addEventListener('change', function() {
-        const passField = document.getElementById('pass');
-        // Toggle the password field visibility based on the checkbox state
-        if (passField.type === 'password') {
-            passField.type = 'text';
-            changeText.textContent = 'Hide'; // Change text to 'Hide' when checkbox is checked
-        } else {
-            passField.type = 'password';
-            changeText.textContent = 'Show'; // Change text to 'Show' when checkbox is unchecked
-        }
-    });
-});
-
-function Login() {
-  return (
-    <div>
-      <h2>Login</h2>
-      <form action="/login" method="post" id="loginForm">
-          <label for='email'>Email:
-          <input type="text" id="email" name="email"/>
-          </label>
-        <div>
-          <label for="pass">Password:
-          <input type="password" id="pass" name="password"/>
-          <span id="show-text">Show</span>
-          <input id="show" type="checkbox"/>
-          </label>
-          <label for="remember">Remember me<input type="radio"/></label> 
+    return (
+        <div className="login-center">
+            <form onSubmit={handleSubmit}>
+                <label>
+                    Email Address:
+                    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                </label>
+                <label>
+                    Password:
+                    <div className="password-container">
+                        <input
+                            type={showPassword ? 'text' : 'password'}
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+                        <span className='make-left' onClick={() => setShowPassword(!showPassword)}>
+                            {showPassword ? 'Hide' : 'Show'}
+                        </span>
+                    </div>
+                </label>
+                <button type="submit">Submit</button>
+            </form>
         </div>
-        <button type="submit">Login</button>
-      </form>
-    </div>
-  );
+    );
 }
+
 export default Login;
