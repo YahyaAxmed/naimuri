@@ -37,6 +37,25 @@ app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, 'Login.jsx'));
 });
 
+// Route to handle login
+app.post('/api/login', (req, res) => {
+    const { email, password } = req.body;
+  
+    const query = 'SELECT * FROM user WHERE email = ? AND password = ?';
+    con.query(query, [email, password], (error, results) => {
+      if (error) {
+        console.error('Database query error:', error);
+        res.status(500).json({ success: false, message: 'An internal server error occurred' });
+      } else if (results.length > 0) {
+        res.json({ success: true, user: results[0] });
+      } else {
+        res.json({ success: false, message: 'Invalid email or password' });
+      }
+    });
+  });
+
+
+
 // Route to retrieve reservation by ID
 app.get('/api/reservation/:reservationId', (req, res) => {
     const id = req.params.reservationId;
@@ -113,7 +132,7 @@ app.post('/api/reservation', (req, res) => {
       }
     });
   });
-  
+
 // Start the server
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}`);

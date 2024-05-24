@@ -1,6 +1,6 @@
 import React from 'react';
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link, Navigate } from 'react-router-dom';
 
 // Import your tab content components
 import UserDashboard from './UserDashboard';
@@ -8,9 +8,9 @@ import UserReservaton from './UserReservation';
 import UserHistory from './UserHistory';
 import Setting from './Setting';
 
+
 function UserLayout() {
   return (
-    <Router>
       <div>
         <button>Setting</button>
         <TabGroup>
@@ -36,7 +36,6 @@ function UserLayout() {
         </TabList>
         </TabGroup>
       </div>
-    </Router>
   );
 }
 
