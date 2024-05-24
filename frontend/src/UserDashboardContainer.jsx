@@ -6,6 +6,7 @@ import BookingDoW from './BookingDoW';
 import TeamName from './TeamName';
 import BookedRoom from './BookedRoom';
 import { Button } from '@headlessui/react'
+import BookingMonth from './BookingMonth';
 
 function UserDashboardContainer() {
   return (
@@ -21,11 +22,11 @@ function UserDashboardContainer() {
                 <div className="absolute w-[115px] top-[69px] left-[19px] [font-family:'Inter-Black',Helvetica] font-black text-black text-[24px] tracking-[0] leading-[normal]">
                     <BookingDoW></BookingDoW>
                 </div>
-                <div className="absolute top-[16px] left-[44px] [font-family:'Inter-Black',Helvetica] font-black text-[#ff0000] text-[40px] tracking-[0] leading-[normal] whitespace-nowrap">
-                JAN
+                <div className="absolute top-[25px] left-[65px] [font-family:'Inter-Black',Helvetica] font-black text-[#ff0000] text-[30px] tracking-[0] leading-[normal] whitespace-nowrap uppercase">
+                    <BookingMonth></BookingMonth>
                 </div>
                 <div className="absolute top-[16px] left-[19px] [font-family:'Inter-Black',Helvetica] font-black text-black text-[40px] tracking-[0] leading-[normal] whitespace-nowrap">
-                1
+                    <BookingDate></BookingDate>
                 </div>
                 <div className="absolute top-[70px] left-[246px] [font-family:'Inter-Light',Helvetica] font-light text-black text-[20px] tracking-[0] leading-[normal] whitespace-nowrap">
                     <BookedRoom></BookedRoom>

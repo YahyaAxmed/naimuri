@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-function BookingDoW() {
-  const [bookingWeek, setBookingWeek] = useState(null);
+function BookingMonth() {
+  const [bookingMonth, setBookingMonth] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -14,7 +14,7 @@ function BookingDoW() {
         return response.json();
       })
       .then((data) => {
-        setBookingWeek(data.booking_week);
+        setBookingMonth(data.booking_month);
         setLoading(false);
       })
       .catch((error) => {
@@ -33,9 +33,9 @@ function BookingDoW() {
 
   return (
     <div>
-      {bookingWeek}
+      {bookingMonth}
     </div>
   );
 }
 
-export default BookingDoW;
+export default BookingMonth;
