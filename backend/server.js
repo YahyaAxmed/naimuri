@@ -116,7 +116,7 @@ app.get('/api/reservation/:reservationId', (req, res) => {
     const id = req.params.reservationId;
     console.log('Received request for /api/reservation/' + id);
 
-    const query = 'SELECT r.id, DATE_FORMAT(booking_date, "%W, %d-%M") AS booking_date, checked_in, attendees, equipment_id, e.name as equipmentName, team_id, t.name as teamName FROM reservation as r LEFT JOIN equipment as e ON e.id = r.equipment_id LEFT JOIN team as t ON t.id = team_id WHERE r.id = ? ';
+    const query = 'SELECT r.id, DATE_FORMAT(booking_date, "%d") AS booking_date, DATE_FORMAT(booking_date, "%W") AS booking_week,  DATE_FORMAT(booking_date, "%b") AS booking_month, checked_in, attendees, equipment_id, e.name as equipmentName, team_id, t.name as teamName FROM reservation as r LEFT JOIN equipment as e ON e.id = r.equipment_id LEFT JOIN team as t ON t.id = team_id WHERE r.id = ? ';
     con.query(query, [id], (error, results) => {
         if (error) {
             console.error('Error:', error);
