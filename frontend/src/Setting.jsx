@@ -1,5 +1,8 @@
 import logo from './logo.svg';
 import React from 'react';
+import UserNav from './UserNav';
+import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
+
 //import './App.css';
 
 function Setting() {
@@ -14,8 +17,14 @@ function Setting() {
       </div>
       <div className="absolute top-[208px] left-[44px] [font-family:'Inter-Light',Helvetica] font-light text-black text-[24px] tracking-[0] leading-[normal]">
         LOGOUT
+        <br></br>
+        <TabGroup>
+        <UserNav></UserNav>
+        </TabGroup>
       </div>
+      
       </div>
+      
     </div>
   );
 }

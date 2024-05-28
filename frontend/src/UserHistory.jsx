@@ -1,7 +1,9 @@
 import logo from './logo.svg';
 import React from 'react';
 import UserHistoryContainer from './UserHistoryContainer';
-//import './App.css';
+import UserNav from './UserNav';
+import { TabGroup } from '@headlessui/react';
+
 
 function UserHistory() {
   return (
@@ -12,8 +14,12 @@ function UserHistory() {
       </div>
       <div className="!absolute !left-[35px] !top-[155px]">
         <UserHistoryContainer/>
+      <TabGroup>
+      <UserNav></UserNav>
+      </TabGroup>
       </div>
       </div>
+      
     </div>
   );
 }

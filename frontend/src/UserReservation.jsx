@@ -3,6 +3,8 @@ import CustomDatePicker from './UserDatePicker';
 import EquipmentPicker from './UserEquipmentPicker';
 import TotalEquipAndTester from './UserTotalEquipAndTester';
 import UserRoomBooking from './UserRoomBooking';
+import UserNav from './UserNav';
+import { TabGroup } from '@headlessui/react';
 
 function UserReservation() {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -66,6 +68,9 @@ function UserReservation() {
         />
         <button onClick={handleBooking}>Book Now</button>
         {message && <p>{message}</p>}
+        <TabGroup>
+      <UserNav></UserNav>
+      </TabGroup>
         </div>
       </div>
     </div>

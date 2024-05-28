@@ -11,22 +11,24 @@ import UserDashboard from './UserDashboard';
 import UserReservaton from './UserReservation';
 import UserHistory from './UserHistory';
 import Setting from './Setting';
+import UserNav from './UserNav';
+import { TabGroup } from '@headlessui/react';
 
 function App() {
   return (
     <div className='App'>
-      {/* <Routes>
+      <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/admin" element={<AdminLayout />} />
         <Route path="/user" element={<UserLayout />} />
-        <Route path="/signup" element={<Signup />} />/
+        {/* <Route path="/signup" element={<Signup />} />/ */}
         <Route path="*" element={<NotFound />} />
         <Route path="/dashboard" element={<UserDashboard />} />
         <Route path="/reservation" element={<UserReservaton />} />
         <Route path="/history" element={<UserHistory />} />
         <Route path="/setting" element={<Setting />} />
-      </Routes> */}
-    <UserLayout></UserLayout>
+      </Routes>
+    {/* <UserLayout></UserLayout> */}
     <Outlet/>
     </div>
   );

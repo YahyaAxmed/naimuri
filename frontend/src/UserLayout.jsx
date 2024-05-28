@@ -23,8 +23,8 @@ function UserLayout() {
               </Routes>
             </TabPanel>
           </TabPanels>
-          <UserNav></UserNav>
         </TabGroup>
+        
     </div>
   );
 }

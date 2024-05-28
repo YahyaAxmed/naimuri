@@ -13,7 +13,7 @@ function UserNav() {
     <div className="bg-white flex flex-row justify-center w-full">
           <TabList>
             <Tab>
-              <Link to="/">Home</Link>
+              <Link to="/user">Home</Link>
             </Tab>
             <Tab>
               <Link to="/reservation">Reservation</Link>

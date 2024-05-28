@@ -1,6 +1,8 @@
 import logo from './logo.svg';
 import React from 'react';
 import UserDashboardContainer from './UserDashboardContainer';
+import UserNav from './UserNav';
+import { TabGroup } from '@headlessui/react';
 //import './App.css';
 
 function UserDashboard() {
@@ -12,6 +14,9 @@ function UserDashboard() {
       </div>
       <div className="!absolute !left-[35px] !top-[155px]">
         <UserDashboardContainer/>
+        <TabGroup>
+      <UserNav></UserNav>
+      </TabGroup>
       </div>
       </div>
     </div>
