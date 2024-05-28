@@ -16,8 +16,16 @@ function Login({ onLogin }) {
       const { success, user, message } = response.data;
       if (success) {
         console.log('LOGIN SUCCESS');
+        console.log(response.data);
+        console.log(user.team_id);
+        //console.log(localStorage.getItem('user'));
         // Handle successful login (e.g., set user data in local storage)
         localStorage.setItem('user', JSON.stringify(user));
+        localStorage.setItem('teamId', JSON.stringify(user.team_id));
+        // const storedUser = JSON.parse(localStorage.getItem('user'));
+        // console.log('StoredUser');
+        // console.log(storedUser);
+
         onLogin(); // Call the onLogin function passed as a prop
         navigate('/dashboard');
       } else {

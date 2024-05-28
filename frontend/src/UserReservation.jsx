@@ -12,13 +12,16 @@ function UserReservation() {
   const [attendees, setAttendees] = useState(1);
   const [message, setMessage] = useState('');
 
+  const teamId = localStorage.getItem('teamId');
+  // console.log(storedUser);
+
   const handleBooking = () => {
     const reservation = {
       equipments_booked: selectedEquipmentNames,
       booking_date: selectedDate,
       attendees: parseInt(attendees),
       room_id: selectedRoom ? selectedRoom.id : null,
-      team_id: 2, // Assuming you have a way to get the team ID
+      team_id: teamId, // Assuming you have a way to get the team ID
     };
 
     fetch('http://localhost:7001/api/reservation', {

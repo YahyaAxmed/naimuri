@@ -10,6 +10,7 @@ function App() {
   useEffect(() => {
     // Check if user is already logged in (e.g., by checking localStorage)
     const user = localStorage.getItem('user');
+    console.log(`USER DETAILS: ${user}`);
     if (user) {
       setIsAuthenticated(true);
     }
@@ -17,8 +18,7 @@ function App() {
 
   const handleLogin = () => {
     setIsAuthenticated(true);
-    localStorage.setItem('user', 'authenticated');
-    console.log(isAuthenticated)
+    localStorage.setItem('userLoggedIn', 'authenticated');
     console.log('User Authorised! Redirect to Dashboard...');
   };
 
