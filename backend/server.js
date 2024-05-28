@@ -109,7 +109,6 @@ app.post('/login', (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
-
   
 // Route to retrieve reservation by ID
 app.get('/api/reservation/:reservationId', (req, res) => {
