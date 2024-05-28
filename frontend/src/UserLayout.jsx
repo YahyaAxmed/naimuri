@@ -13,7 +13,6 @@ import UserHistoryDetails from './UserHistoryDetails';
 function UserLayout() {
   return (
       <div>
-        <button>Setting</button>
         <TabGroup>
         <TabPanels>
           <TabPanel>
@@ -21,6 +20,7 @@ function UserLayout() {
           <Route path="/" element={<UserDashboard />} />
           <Route path="/reservation" element={<UserReservaton />} />
           <Route path="/history" exact element={<UserHistory />} />
+          <Route path="/setting" exact element={<Setting />} />
           {/* <Route path="/history/:id" element={<UserHistoryDetails />} /> */}
         //</Routes>
           </TabPanel>
@@ -34,6 +34,9 @@ function UserLayout() {
           </Tab>
           <Tab>
             <Link to="/history">History</Link>
+          </Tab>
+          <Tab>
+            <Link to="/setting">Setting</Link>
           </Tab>
         </TabList>
         </TabGroup>
