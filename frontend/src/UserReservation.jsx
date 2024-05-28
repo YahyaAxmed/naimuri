@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import CustomDatePicker from './UserDatePicker';
 import EquipmentPicker from './UserEquipmentPicker';
 import TotalEquipAndTester from './UserTotalEquipAndTester';
 import UserRoomBooking from './UserRoomBooking';
 
 function UserReservation() {
+  const { id } = useParams();
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedEquipmentNames, setSelectedEquipmentNames] = useState('');
   const [greatestTesterRequired, setGreatestTesterRequired] = useState(0);
@@ -13,7 +15,28 @@ function UserReservation() {
   const [message, setMessage] = useState('');
 
   const teamId = localStorage.getItem('teamId');
-  // console.log(storedUser);
+
+  useEffect(() => {
+    if (id) {
+      // Fetch existing reservation details to prefill the form
+      const fetchReservationDetails = async () => {
+        try {
+          const response = await fetch(`http://localhost:7001/api/reservation/${id}`);
+          const data = await response.json();
+          // Populate state with fetched data
+          setSelectedDate(new Date(data.booking_date));
+          setSelectedEquipmentNames(data.equipments_booked);
+          setGreatestTesterRequired(data.greatestTesterRequired);
+          setSelectedRoom(data.room_id); // Adjust this as per your data structure
+          setAttendees(data.attendees);
+        } catch (error) {
+          console.error('Error fetching reservation details:', error);
+        }
+      };
+
+      fetchReservationDetails();
+    }
+  }, [id]);
 
   const handleBooking = () => {
     const reservation = {
@@ -21,7 +44,7 @@ function UserReservation() {
       booking_date: selectedDate,
       attendees: parseInt(attendees),
       room_id: selectedRoom ? selectedRoom.id : null,
-      team_id: teamId, // Assuming you have a way to get the team ID
+      team_id: teamId,
     };
 
     fetch('http://localhost:7001/api/reservation', {

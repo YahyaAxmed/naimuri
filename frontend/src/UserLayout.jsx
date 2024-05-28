@@ -7,22 +7,20 @@ import UserDashboard from './UserDashboard';
 import UserReservaton from './UserReservation';
 import UserHistory from './UserHistory';
 import Setting from './Setting';
-import UserHistoryDetails from './UserHistoryDetails';
 
 
 function UserLayout() {
   return (
       <div>
+        <button>Setting</button>
         <TabGroup>
         <TabPanels>
           <TabPanel>
           <Routes>
           <Route path="/" element={<UserDashboard />} />
           <Route path="/reservation" element={<UserReservaton />} />
-          <Route path="/history" exact element={<UserHistory />} />
-          <Route path="/setting" exact element={<Setting />} />
-          {/* <Route path="/history/:id" element={<UserHistoryDetails />} /> */}
-        //</Routes>
+          <Route path="/history" element={<UserHistory />} />
+        </Routes>
           </TabPanel>
         </TabPanels>
         <TabList>
@@ -34,9 +32,6 @@ function UserLayout() {
           </Tab>
           <Tab>
             <Link to="/history">History</Link>
-          </Tab>
-          <Tab>
-            <Link to="/setting">Setting</Link>
           </Tab>
         </TabList>
         </TabGroup>

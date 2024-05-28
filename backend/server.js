@@ -13,7 +13,7 @@ app.use(cors());
 const con = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '19920531', // Change to your user password 
+    password: '', // Change to your user password 
     database: 'Naimuri' // Change to your database name
 });
 
@@ -53,6 +53,69 @@ app.post('/api/login', (req, res) => {
       }
     });
   });
+
+// Route to update the checked_in status for a reservation
+app.put('/api/reservations/checkin/:id', (req, res) => {
+    const reservationId = req.params.id;
+    console.log(`CHECKING IN RESERVATION ID: ${reservationId}`);
+
+    const query = `UPDATE reservation SET checked_in = 1 WHERE id = ?`;
+    con.query(query, [reservationId], (error, results) => {
+        if (error) {
+            console.error('Error:', error);
+            res.status(500).json({ error: 'An internal server error occurred', details: error });
+            return;
+        }
+
+        if (results.affectedRows > 0) {
+            console.log('Check-in successful for reservation ID:', reservationId);
+            res.json({ success: true, message: 'Check-in successful' });
+        } else {
+            console.log('No reservation found with ID:', reservationId);
+            res.status(404).json({ error: 'No reservation found' });
+        }
+    });
+});
+
+
+// Route to retrieve reservations for teamId (Dashboard Page)
+app.get('/api/dashboard/:teamid', (req, res) => {
+    const teamId = req.params.teamid;
+    console.log("GETTING ALL RESERVATIONS...");
+    console.log('Received request for /api/reservations/');
+
+    const query = `SELECT r.id, 
+                          DATE_FORMAT(booking_date, "%W, %d-%M") AS bookingDate,
+                          equipments_booked, 
+                          checked_in, 
+                          r.room_id,
+                          r.team_id,  
+                          rm.name as roomName, 
+                          t.name as teamName 
+                   FROM reservation as r 
+                   LEFT JOIN team as t ON t.id = r.team_id 
+                   LEFT JOIN room as rm ON rm.id = r.room_id 
+                   WHERE t.id = ?
+                   AND r.checked_in = 0
+                   ORDER BY booking_date DESC`;
+    con.query(query, [teamId], (error, results) => {
+        if (error) {
+            console.error('Error:', error);
+            res.status(500).json({ error: 'An internal server error occurred', details: error });
+            return;
+        }
+
+        if (results.length > 0) {
+            const reservation = results;
+            console.log('Sending response:', reservation);
+            res.json(reservation);
+        } else {
+            console.log('No reservations found');
+            res.status(404).json({ error: 'No reservations found' });
+        }
+    });
+});
+
 
 // Route to retrieve reservations for teamId (History Page)
 app.get('/api/reservations/:teamid', (req, res) => {
