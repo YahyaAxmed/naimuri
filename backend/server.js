@@ -13,7 +13,7 @@ app.use(cors());
 const con = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '', // Change to your user password 
+    password: '19920531', // Change to your user password 
     database: 'Naimuri' // Change to your database name
 });
 
@@ -144,31 +144,50 @@ app.get('/api/room', (req, res) => {
 // New endpoint to ADD/handle reservation creation
 app.post('/api/reservation', (req, res) => {
     const { equipments_booked, booking_date, attendees, room_id, team_id } = req.body;
-    
-    if (!equipments_booked || !booking_date || !attendees || !room_id || !team_id) {
+    console.log(req.body);
+ 
+const originalDate = booking_date;
+ 
+// Create a new Date object from the original date string
+const dateObj = new Date(originalDate);
+ 
+// Get the date components
+const year = dateObj.getFullYear();
+const month = String(dateObj.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+const day = String(dateObj.getDate()).padStart(2, '0');
+ 
+// Get the time components
+const hours = String(dateObj.getHours()).padStart(2, '0');
+const minutes = String(dateObj.getMinutes()).padStart(2, '0');
+const seconds = String(dateObj.getSeconds()).padStart(2, '0');
+ 
+// Combine the components into the desired format
+const bookingDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+ 
+    if (!equipments_booked || !bookingDate || !attendees || !room_id || !team_id) {
       return res.status(400).json({ error: 'All fields are required' });
     }
-
+ 
     con.query('SELECT capacity FROM room WHERE id = ?', [room_id], (err, results) => {
         if (err) {
             console.error('Database query error:', err);
             res.status(500).json({ error: 'An internal server error occurred' });
             return;
         }
-
+ 
         if (results.length === 0) {
             res.status(404).json({ error: 'Room not found' });
             return;
         }
-
+ 
         const roomCapacity = results[0].capacity;
         if (attendees > roomCapacity) {
             res.status(400).json({ error: 'Number of attendees exceeds room capacity' });
             return;
         }
-
-        const query = 'INSERT INTO reservation (equipments_booked, team_id, room_id, booking_date, checked_in, attendees) VALUES (?, ?, ?, ?, 1, ?)';
-        con.query(query, [equipments_booked, team_id, room_id, booking_date, attendees], (error, results) => {
+ 
+        const query = 'INSERT INTO reservation (equipments_booked, team_id, room_id, booking_date, checked_in, attendees) VALUES (?, ?, ?, ?, 0, ?)';
+        con.query(query, [equipments_booked, team_id, room_id, bookingDate, attendees], (error, results) => {
             if (error) {
                 console.error('Database query error:', error);
                 res.status(500).json({ error: 'An internal server error occurred' });
@@ -186,7 +205,7 @@ app.post('/api/reservation', (req, res) => {
         });
     });
 });
-
+ 
 // Start the server
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}`);
