@@ -51,20 +51,20 @@ function Login({ onLogin }) {
 
   return (
     <div style={{width: '100%', height: '100%', position: 'relative', background: 'white'}}>
-      <div style={{left: 43, top: 280, position: 'absolute', color: 'black', fontSize: 44, fontFamily: 'Inter', fontWeight: '800', wordWrap: 'break-word'}}>
+      <div style={{left: 60, top: 280, position: 'absolute', color: 'black', fontSize: 44, fontFamily: 'Inter', fontWeight: '800', wordWrap: 'break-word'}}>
         BookMySpace
       </div>
-        <div style={{width: 342, height: 198, left: 44, top: 360, position: 'absolute', background: '#EDEDED', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius: 10}}>
+        <div style={{width: 340, height: 155, left: 44, top: 360, position: 'absolute', background: '#EDEDED', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius: 15}}>
           <form onSubmit={handleSubmit}>
-            <div style={{left: 20, top: 40, position: 'absolute', color: 'black', fontSize: 20, fontFamily: 'Inter', fontWeight: '300', textTransform: 'uppercase', wordWrap: 'break-word'}}>
+            <div style={{left: 20, top: 30, position: 'absolute', color: 'black', fontSize: 20, fontFamily: 'Inter', fontWeight: '300', textTransform: 'uppercase', wordWrap: 'break-word'}}>
               <label>Email:</label>
-              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required style={{left: 145, position: 'absolute'}}/>
             </div>
-            <div style={{left: 20, top: 80, position: 'absolute', color: 'black', fontSize: 20, fontFamily: 'Inter', fontWeight: '300', textTransform: 'uppercase', wordWrap: 'break-word'}}>
+            <div style={{left: 20, top: 70, position: 'absolute', color: 'black', fontSize: 20, fontFamily: 'Inter', fontWeight: '300', textTransform: 'uppercase', wordWrap: 'break-word'}}>
               <label>Password:</label>
-              <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+              <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required style={{left: 145, position: 'absolute'}}/>
             </div>
-            <button type="submit" style={{left: 140, top: 120, position: 'absolute', color: 'black', fontSize: 20, fontFamily: 'Inter', fontWeight: '300', textTransform: 'uppercase', wordWrap: 'break-word', width: '30%', height: '15%', background: 'white', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius: 15}}>Login</button>
+            <button type="submit" style={{left: 165, top: 110, position: 'absolute', color: 'black', fontSize: 20, fontFamily: 'Inter', fontWeight: '300', textTransform: 'uppercase', wordWrap: 'break-word', width: '30%', height: '18%', background: 'white', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius: 10}}>Login</button>
             {error && <div>{error}</div>}
           </form>
         </div>  
