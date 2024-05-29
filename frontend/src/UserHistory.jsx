@@ -10,7 +10,7 @@ import BookingEquipment from './UserBookingEquipment';
 import BookingTester from './UserBookingTester';
 import BookingTeam from './UserBookingTeam';
 //import './App.css';
-import './UserHistory.css';  // Import the CSS file
+import './App.css';  // Import the CSS file
 
 function UserHistory() {
   const [reservations, setReservations] = useState([]);

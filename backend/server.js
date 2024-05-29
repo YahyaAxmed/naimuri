@@ -60,6 +60,7 @@ app.put('/api/reservations/checkin/:id', (req, res) => {
     console.log(`CHECKING IN RESERVATION ID: ${reservationId}`);
 
     const query = `UPDATE reservation SET checked_in = 1 WHERE id = ?`;
+    //const query = `UPDATE reservation SET checked_in = 1 WHERE id = ?`;
     con.query(query, [reservationId], (error, results) => {
         if (error) {
             console.error('Error:', error);
@@ -70,6 +71,14 @@ app.put('/api/reservations/checkin/:id', (req, res) => {
         if (results.affectedRows > 0) {
             console.log('Check-in successful for reservation ID:', reservationId);
             res.json({ success: true, message: 'Check-in successful' });
+            const cap = `UPDATE room JOIN reservation ON room.id = reservation.room_id SET room.capacity = room.capacity + reservation.attendees WHERE reservation.id = ?`;
+            con.query(cap, [reservationId], (error, results)=>{
+                if (error) {
+                    console.error('Error:', error);
+                    res.status(500).json({ error: 'An internal server error occurred', details: error });
+                    return;
+                }
+            }) 
         } else {
             console.log('No reservation found with ID:', reservationId);
             res.status(404).json({ error: 'No reservation found' });

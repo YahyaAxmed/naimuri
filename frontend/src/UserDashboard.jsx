@@ -6,8 +6,8 @@ import BookingEquipment from './UserBookingEquipment';
 import BookingNumber from './UserBookingNumber';
 import BookingTeam from './UserBookingTeam';
 import BookingRoom from './UserBookingRoom';
-// import './App.css';
-import './UserDashboard.css';  // Import the CSS file
+import './App.css';
+//import './UserDashboard.css';  // Import the CSS file
 
 function UserDashboard() {
   const [reservations, setReservations] = useState([]);
