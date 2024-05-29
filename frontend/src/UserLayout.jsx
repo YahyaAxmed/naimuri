@@ -12,7 +12,6 @@ import Setting from './Setting';
 function UserLayout() {
   return (
       <div>
-        <button>Setting</button>
         <TabGroup>
         <TabPanels>
           <TabPanel>
@@ -20,6 +19,7 @@ function UserLayout() {
           <Route path="/" element={<UserDashboard />} />
           <Route path="/reservation" element={<UserReservaton />} />
           <Route path="/history" element={<UserHistory />} />
+          <Route path="/setting" element={<Setting />} />
         </Routes>
           </TabPanel>
         </TabPanels>
@@ -32,6 +32,9 @@ function UserLayout() {
           </Tab>
           <Tab>
             <Link to="/history">History</Link>
+          </Tab>
+          <Tab>
+            <Link to="/setting">Setting</Link>
           </Tab>
         </TabList>
         </TabGroup>

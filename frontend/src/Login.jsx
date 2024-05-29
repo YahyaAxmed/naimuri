@@ -50,20 +50,24 @@ function Login({ onLogin }) {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Email:</label>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        </div>
-        <button type="submit">Login</button>
-        {error && <div>{error}</div>}
-      </form>
+    <div style={{width: '100%', height: '100%', position: 'relative', background: 'white'}}>
+      <div style={{left: 43, top: 280, position: 'absolute', color: 'black', fontSize: 44, fontFamily: 'Inter', fontWeight: '800', wordWrap: 'break-word'}}>
+        BookMySpace
+      </div>
+        <div style={{width: 342, height: 198, left: 44, top: 360, position: 'absolute', background: '#EDEDED', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius: 10}}>
+          <form onSubmit={handleSubmit}>
+            <div style={{left: 20, top: 40, position: 'absolute', color: 'black', fontSize: 20, fontFamily: 'Inter', fontWeight: '300', textTransform: 'uppercase', wordWrap: 'break-word'}}>
+              <label>Email:</label>
+              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+            </div>
+            <div style={{left: 20, top: 80, position: 'absolute', color: 'black', fontSize: 20, fontFamily: 'Inter', fontWeight: '300', textTransform: 'uppercase', wordWrap: 'break-word'}}>
+              <label>Password:</label>
+              <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+            </div>
+            <button type="submit" style={{left: 140, top: 120, position: 'absolute', color: 'black', fontSize: 20, fontFamily: 'Inter', fontWeight: '300', textTransform: 'uppercase', wordWrap: 'break-word', width: '30%', height: '15%', background: 'white', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius: 15}}>Login</button>
+            {error && <div>{error}</div>}
+          </form>
+        </div>  
     </div>
   );
 }
