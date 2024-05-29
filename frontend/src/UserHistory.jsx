@@ -41,12 +41,12 @@ function UserHistory() {
   };
 
   return (
-    <div style={{width: '100%', height: '100%', position: 'relative', background: 'white'}}>
+    <div>
       <div style={{left: 43, top: 82, position: 'fixed', color: 'black', fontSize: 40, fontFamily: 'Inter', fontWeight: '900', textTransform: 'uppercase', wordWrap: 'break-word'}}>history</div>
       {reservations.length > 0 ? (
         reservations.map((reservation) => (
-          <div key={reservation.id} className={`reservation-card ${visibleDetails ? 'collapsed':'expanded'}`}>
-            <div style={{left: 20, top: 20, position: 'absolute', color: 'black', fontSize: 36, fontFamily: 'Inter', fontWeight: '900', textTransform: 'uppercase', wordWrap: 'break-word'}}>
+          <div key={reservation.id} className={`reservation-card`}>
+            {/* <div style={{left: 20, top: 20, position: 'absolute', color: 'black', fontSize: 36, fontFamily: 'Inter', fontWeight: '900', textTransform: 'uppercase', wordWrap: 'break-word'}}>
             <BookingDate bookingDate={reservation.bookingDate} />
             </div>
             <div style={{left: 70, top: 20, position: 'absolute', color: '#FF0000', fontSize: 36, fontFamily: 'Inter', fontWeight: '900', textTransform: 'uppercase', wordWrap: 'break-word'}}>
@@ -60,32 +60,80 @@ function UserHistory() {
             </div>
             <div style={{textAlign: 'right', right:20, top:35 ,position: 'relative', color: 'black', fontSize: 15, fontFamily: 'Inter', fontWeight: '300', textTransform: 'capitalize', wordWrap: 'break-word'}}>
             <BookingStatus bookingStatus={reservation.checked_in} />
-            </div>
+            </div> */}
+            <table>
+              <tr>
+                <td>
+                <div style={{color: 'black', fontSize: 40, fontFamily: 'Inter', fontWeight: '900', textTransform: 'uppercase', wordWrap: 'break-word'}}>
+                <BookingDate bookingDate={reservation.bookingDate} />
+                </div>
+                </td>
+                <td>
+                <div style={{color: '#FF0000', fontSize: 40, fontFamily: 'Inter', fontWeight: '900', textTransform: 'uppercase', wordWrap: 'break-word'}}>
+                <BookingMonth bookingMonth={reservation.bookingMonth} />
+                </div>
+                </td>
+                <td> </td>
+                <td>
+                <div style={{textAlign: 'left', color: 'black', fontSize: 24, fontFamily: 'Inter', fontWeight: '300', textTransform: 'capitalize', wordWrap: 'break-word'}}>
+                <BookingNumber bookingNumber={reservation.id} />
+                </div>  
+                </td>
+              </tr>
+              <tr>
+                <td colSpan={2}>
+                <div style={{width: '100%', height: '100%', color: 'black', fontSize: 24, fontFamily: 'Inter', fontWeight: '900', textTransform: 'uppercase', wordWrap: 'break-word'}}>
+                <BookingWeek bookingWeek={reservation.bookingWeek} />
+                </div>
+                </td>
+                <td> </td>
+                <td>
+                <div style={{color: 'black', fontSize: 15, fontFamily: 'Inter', fontWeight: '300', textTransform: 'uppercase', wordWrap: 'break-word'}}>
+                <BookingStatus bookingStatus={reservation.checked_in} />
+                </div>
+                </td>
+              </tr>
+            </table>
+
             {visibleDetails[reservation.id] && (
               <>
-                <div style={{left: 20, top: 100, position: 'absolute', color: 'black', fontSize: 24, fontFamily: 'Inter', fontWeight: '500', textTransform: 'capitalize', wordWrap: 'break-word'}}>
-                  Total Equipment:
-                </div>
-                <div style={{left: 20, top: 130, position: 'absolute', color: 'black', fontSize: 24, fontFamily: 'Inter', fontWeight: '300', textTransform: 'capitalize', wordWrap: 'break-word'}}>
-                <BookingEquipment bookingEquipment={reservation.equipments_booked} />
-                </div>
-                <div style={{left: 20, top: 160, position: 'absolute', color: 'black', fontSize: 24, fontFamily: 'Inter', fontWeight: '500', textTransform: 'capitalize', wordWrap: 'break-word'}}>
-                  Total Attendees:
-                </div>
-                <div style={{left: 20, top: 190, position: 'absolute', color: 'black', fontSize: 24, fontFamily: 'Inter', fontWeight: '300', textTransform: 'capitalize', wordWrap: 'break-word'}}>
-                <BookingTester bookingTester={reservation.attendees} />
-                </div>
-                <div style={{left: 20, top: 220, position: 'absolute', color: 'black', fontSize: 24, fontFamily: 'Inter', fontWeight: '500', textTransform: 'capitalize', wordWrap: 'break-word'}}>
-                  Tester:
-                </div>
-                <div style={{left: 20, top: 250, position: 'absolute', color: 'black', fontSize: 24, fontFamily: 'Inter', fontWeight: '300', textTransform: 'capitalize', wordWrap: 'break-word'}}>
-                <BookingTeam bookingTeam={reservation.teamName} />
-                </div>
+                <table>
+                  <tr>
+                    <div style={{width: '100%', height: '100%', color: 'black', fontSize: 24, fontFamily: 'Inter', fontWeight: '500', textTransform: 'capitalize', wordWrap: 'break-word'}}>
+                    Total Equipment:
+                    </div>
+                  </tr>
+                  <tr>
+                    <div style={{width: '100%', height: '100%', color: 'black', fontSize: 24, fontFamily: 'Inter', fontWeight: '300', textTransform: 'capitalize', wordWrap: 'break-word'}}>
+                    <BookingEquipment bookingEquipment={reservation.equipments_booked} />
+                    </div>
+                  </tr>
+                  <tr>
+                    <div style={{width: '100%', height: '100%', color: 'black', fontSize: 24, fontFamily: 'Inter', fontWeight: '500', textTransform: 'capitalize', wordWrap: 'break-word'}}>
+                    Total Attendees:
+                    </div>
+                  </tr>
+                  <tr>
+                  <div style={{width: '100%', height: '100%', color: 'black', fontSize: 24, fontFamily: 'Inter', fontWeight: '300', textTransform: 'capitalize', wordWrap: 'break-word'}}>
+                    <BookingTester bookingTester={reservation.attendees} />
+                    </div>
+                  </tr>
+                  <tr>
+                  <div style={{width: '100%', height: '100%', color: 'black', fontSize: 24, fontFamily: 'Inter', fontWeight: '500', textTransform: 'capitalize', wordWrap: 'break-word'}}>
+                    Tester:
+                    </div>
+                  </tr>
+                  <tr>
+                  <div style={{width: '100%', height: '100%', color: 'black', fontSize: 24, fontFamily: 'Inter', fontWeight: '300', textTransform: 'capitalize', wordWrap: 'break-word'}}>
+                    <BookingTeam bookingTeam={reservation.teamName} />
+                    </div>
+                  </tr>
+                </table>
               </>
             )}
-            <button style={{width: 144, paddingLeft: 16, paddingRight: 16, paddingTop: 8, paddingBottom: 8, left: 105, top: 110, position: 'absolute', background: 'white', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius: 20, justifyContent: 'center', alignItems: 'center', gap: 8, display: 'inline-flex'}}
+            <button
              onClick={() => toggleDetails(reservation.id)}>
-              {visibleDetails[reservation.id] ? 'Hide Details' : 'Details'}
+              {visibleDetails[reservation.id] ? 'Close' : 'Details'}
             </button>
             
             {/* <BookingEquipment bookingEquipment={reservation.equipments_booked} />

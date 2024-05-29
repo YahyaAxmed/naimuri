@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import BookingDate from './UserBookingDate';
+import BookingMonth from './UserBookingMonth';
+import BookingWeek from './UserBookingWeek';
 import BookingStatus from './UserBookingStatus';
 import BookingEquipment from './UserBookingEquipment';
 import BookingNumber from './UserBookingNumber';
@@ -69,26 +71,73 @@ function UserDashboard() {
 
   return (
     <div>
-      <h1>Dashboard</h1>
+      <div style={{left: 43, top: 82, position: 'fixed', color: 'black', fontSize: 40, fontFamily: 'Inter', fontWeight: '900', textTransform: 'uppercase', wordWrap: 'break-word'}}>Dashboard</div>
       {checkInMessage && <p className="check-in-message">{checkInMessage}</p>}
       {reservations.length > 0 ? (
         reservations.map((reservation) => (
           <div key={reservation.id} className="dashboard-card">
-            <BookingDate bookingDate={reservation.bookingDate} />
-            <BookingTeam bookingTeam={reservation.teamName} />
-            <BookingRoom bookingRoom={reservation.roomName} />
+            <table>
+              <tr>
+                <td>
+                <div style={{color: 'black', fontSize: 40, fontFamily: 'Inter', fontWeight: '900', textTransform: 'uppercase', wordWrap: 'break-word'}}>
+                <BookingDate bookingDate={reservation.bookingDate} />
+                </div>
+                </td>
+                <td>
+                <div style={{color: '#FF0000', fontSize: 40, fontFamily: 'Inter', fontWeight: '900', textTransform: 'uppercase', wordWrap: 'break-word'}}>
+                <BookingMonth bookingMonth={reservation.bookingMonth} />
+                </div>
+                </td>
+                <td>
+                <div style={{textAlign: 'right', color: 'black', fontSize: 24, fontFamily: 'Inter', fontWeight: '300', textTransform: 'capitalize', wordWrap: 'break-word'}}>
+                <BookingNumber bookingNumber={reservation.id} />
+                </div>  
+                </td>
+              </tr>
+              <tr>
+                <td colSpan={2}>
+                <div style={{width: '100%', height: '100%', color: 'black', fontSize: 24, fontFamily: 'Inter', fontWeight: '900', textTransform: 'uppercase', wordWrap: 'break-word'}}>
+                <BookingWeek bookingWeek={reservation.bookingWeek} />
+                </div>
+                </td>
+                <td>
+                <div style={{color: 'black', fontSize: 20, fontFamily: 'Inter', fontWeight: '300', textTransform: 'uppercase', wordWrap: 'break-word'}}>
+                <BookingTeam bookingTeam={reservation.teamName} />
+                </div>
+                </td>
+                <td>
+                <div style={{width: '100%', height: '100%', color: 'black', fontSize: 20, fontFamily: 'Inter', fontWeight: '300', textTransform: 'uppercase', wordWrap: 'break-word'}}>
+                <BookingRoom bookingRoom={reservation.roomName} />
+                </div>
+                </td>
+              </tr>
+            </table>
 
             {visibleDetails[reservation.id] && (
               <>
-                <BookingEquipment bookingEquipment={reservation.equipments_booked} />
-                <BookingNumber bookingNumber={reservation.id} />
+                <table>
+                  <tr>
+                    <td>
+                    <div style={{width: '100%', height: '100%', color: 'black', fontSize: 24, fontFamily: 'Inter', fontWeight: '500', textTransform: 'capitalize', wordWrap: 'break-word'}}>
+                      Tested Equipment:
+                    </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                    <div style={{width: '100%', height: '100%', textAlign: 'left', color: 'black', fontSize: 24, fontFamily: 'Inter', fontWeight: '300', textTransform: 'capitalize', wordWrap: 'break-word'}}>
+                      <BookingEquipment bookingEquipment={reservation.equipments_booked} />
+                    </div>  
+                    </td>
+                  </tr>
+                </table>
                 <button onClick={() => handleCheckIn(reservation.id)}>
                   Check-In
                 </button>
               </>
             )}
             <button onClick={() => toggleDetails(reservation.id)}>
-              {visibleDetails[reservation.id] ? 'Hide Details' : 'View Details'}
+              {visibleDetails[reservation.id] ? 'Hide Details' : 'Show Details'}
             </button>
             <br />
             <Link to="/reservation">Modify</Link> {/* Use Link to navigate to UserReservation */}

@@ -94,7 +94,9 @@ app.get('/api/dashboard/:teamid', (req, res) => {
     console.log('Received request for /api/reservations/');
 
     const query = `SELECT r.id, 
-                          DATE_FORMAT(booking_date, "%W, %d-%M") AS bookingDate,
+                          DATE_FORMAT(booking_date, "%d") AS bookingDate,
+                          DATE_FORMAT(booking_date, "%b") AS bookingMonth,
+                          DATE_FORMAT(booking_date, "%W") AS bookingWeek,
                           equipments_booked, 
                           checked_in, 
                           r.room_id,
