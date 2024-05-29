@@ -45,7 +45,7 @@ function UserHistory() {
       <div style={{left: 43, top: 82, position: 'fixed', color: 'black', fontSize: 40, fontFamily: 'Inter', fontWeight: '900', textTransform: 'uppercase', wordWrap: 'break-word'}}>history</div>
       {reservations.length > 0 ? (
         reservations.map((reservation) => (
-          <div key={reservation.id} className="reservation-card" style={{width: 342, height: 130,top: 150, left:12, position: 'relative'}}>
+          <div key={reservation.id} className={`reservation-card ${visibleDetails ? 'collapsed':'expanded'}`}>
             <div style={{left: 20, top: 20, position: 'absolute', color: 'black', fontSize: 36, fontFamily: 'Inter', fontWeight: '900', textTransform: 'uppercase', wordWrap: 'break-word'}}>
             <BookingDate bookingDate={reservation.bookingDate} />
             </div>
