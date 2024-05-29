@@ -44,9 +44,13 @@ function UserHistory() {
       {reservations.length > 0 ? (
         reservations.map((reservation) => (
           <div key={reservation.id} className="reservation-card" style={{top: 150, position: 'relative'}}>
-            <BookingDate bookingDate={reservation.bookingDate} />
+            <BookingDate  bookingDate={reservation.bookingDate} />
+            <div style={{textAlign: 'right', right:20, position: 'relative', color: 'black', fontSize: 16, fontFamily: 'Inter', fontWeight: '300', textTransform: 'uppercase', wordWrap: 'break-word'}}>
             <BookingNumber bookingNumber={reservation.id} />
+            </div>
+            <div style={{textAlign: 'right', right:20, position: 'relative', color: 'black', fontSize: 16, fontFamily: 'Inter', fontWeight: '300', textTransform: 'capitalize', wordWrap: 'break-word'}}>
             <BookingStatus bookingStatus={reservation.checked_in} />
+            </div>
             {visibleDetails[reservation.id] && (
               <>
                 <BookingEquipment bookingEquipment={reservation.equipments_booked} />
@@ -54,7 +58,7 @@ function UserHistory() {
                 <BookingTeam bookingTeam={reservation.teamName} />
               </>
             )}
-            <button onClick={() => toggleDetails(reservation.id)}>
+            <button className='center' onClick={() => toggleDetails(reservation.id)}>
               {visibleDetails[reservation.id] ? 'Hide Details' : 'Details'}
             </button>
             {/* <BookingEquipment bookingEquipment={reservation.equipments_booked} />
