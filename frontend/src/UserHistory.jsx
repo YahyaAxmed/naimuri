@@ -39,11 +39,11 @@ function UserHistory() {
   };
 
   return (
-    <div>
-      <h1>History</h1>
+    <div style={{width: '100%', height: '100%', position: 'relative', background: 'white'}}>
+      <div style={{left: 43, top: 82, position: 'absolute', color: 'black', fontSize: 40, fontFamily: 'Inter', fontWeight: '900', textTransform: 'uppercase', wordWrap: 'break-word'}}>history</div>
       {reservations.length > 0 ? (
         reservations.map((reservation) => (
-          <div key={reservation.id} className="reservation-card">
+          <div key={reservation.id} className="reservation-card" style={{top: 200}}>
             <BookingDate bookingDate={reservation.bookingDate} />
             <BookingNumber bookingNumber={reservation.id} />
             <BookingStatus bookingStatus={reservation.checked_in} />
