@@ -1,7 +1,7 @@
 import React from 'react';
 
 function UserBookingEquipment({ bookingEquipment }) {
-  return <div>Booking Equipment: {bookingEquipment}</div>;
+  return <div>{bookingEquipment}</div>;
 }
 
 export default UserBookingEquipment;
