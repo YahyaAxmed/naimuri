@@ -2,6 +2,8 @@ import logo from './logo.svg';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import BookingDate from './UserBookingDate';
+import BookingMonth from './UserBookingMonth';
+import BookingWeek from './UserBookingWeek';
 import BookingNumber from './UserBookingNumber';
 import BookingStatus from './UserBookingStatus';
 import BookingEquipment from './UserBookingEquipment';
@@ -45,6 +47,8 @@ function UserHistory() {
         reservations.map((reservation) => (
           <div key={reservation.id} className="reservation-card" style={{top: 150, position: 'relative'}}>
             <BookingDate  bookingDate={reservation.bookingDate} />
+            <BookingMonth  bookingMonth={reservation.bookingMonth} />
+            <BookingWeek  bookingWeek={reservation.bookingWeek} />
             <div style={{textAlign: 'right', right:20, position: 'relative', color: 'black', fontSize: 16, fontFamily: 'Inter', fontWeight: '300', textTransform: 'uppercase', wordWrap: 'break-word'}}>
             <BookingNumber bookingNumber={reservation.id} />
             </div>

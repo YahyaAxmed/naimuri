@@ -123,7 +123,7 @@ app.get('/api/reservations/:teamid', (req, res) => {
     console.log("GETTING ALL RESERVATIONS...");
     console.log('Received request for /api/reservations/');
 
-    const query = `SELECT r.id, DATE_FORMAT(booking_date, "%W, %d-%M") AS bookingDate,equipments_booked, checked_in, attendees,team_id, t.name as teamName 
+    const query = `SELECT r.id, DATE_FORMAT(booking_date, "%d") AS bookingDate, DATE_FORMAT(booking_date, "%b") AS bookingMonth, DATE_FORMAT(booking_date, "%W") AS bookingWeek, equipments_booked, checked_in, attendees,team_id, t.name as teamName 
                    FROM reservation as r 
                    LEFT JOIN team as t ON t.id = team_id 
                    WHERE t.id = ?
@@ -151,7 +151,7 @@ app.get('/api/reservation/:reservationId', (req, res) => {
     const id = req.params.reservationId;
     console.log('Received request for /api/reservation/' + id);
 
-    const query = `SELECT r.id, DATE_FORMAT(booking_date, "%d") AS booking_date, DATE_FORMAT(booking_date, "%b") AS booking_month, DATE_FORMAT(booking_date, "%W") AS booking_week, equipments_booked, checked_in, attendees,team_id, t.name as teamName 
+    const query = `SELECT r.id, DATE_FORMAT(booking_date, "%W, %d-%M") AS booking_date, equipments_booked, checked_in, attendees,team_id, t.name as teamName 
                    FROM reservation as r 
                    LEFT JOIN team as t ON t.id = team_id 
                    WHERE r.id = ?`;
