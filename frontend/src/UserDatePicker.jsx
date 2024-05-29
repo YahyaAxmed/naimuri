@@ -17,6 +17,8 @@ function UserDatePicker({ setSelectedDate }) {
       <DatePicker
         selected={startDate}
         onChange={handleDateChange}
+        minDate={new Date()}
+        dateFormat='dd/MM/yyyy'
       />
     </div>
   );

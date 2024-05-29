@@ -4,6 +4,7 @@ import CustomDatePicker from './UserDatePicker';
 import EquipmentPicker from './UserEquipmentPicker';
 import TotalEquipAndTester from './UserTotalEquipAndTester';
 import UserRoomBooking from './UserRoomBooking';
+import './App.css';
 
 function UserReservation() {
   const { id } = useParams();
