@@ -60,7 +60,7 @@ function UserDashboard() {
         // Remove the message after a few seconds
         setTimeout(() => {
           setCheckInMessage('');
-        }, 8000);
+        }, 3000);
       } else {
         console.error('Check-in failed:', result.error);
       }

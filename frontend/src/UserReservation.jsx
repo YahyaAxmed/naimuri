@@ -62,11 +62,13 @@ function UserReservation() {
       return response.json();
     })
     .then(data => {
-      setMessage('Thank you, the reservation has been sent to your team.');
+      alert('Thank you, the reservation has been sent to your team.');
+      // setMessage('Thank you, the reservation has been sent to your team.');
     })
     .catch(error => {
       console.error('Fetch error:', error);
-      setMessage('There was an error making the reservation. Please try again.');
+      alert('There was an error making the reservation. Please try again.');
+      // setMessage('There was an error making the reservation. Please try again.');
     });
   };
 
@@ -74,28 +76,28 @@ function UserReservation() {
     <div>
       <div style={{left: 43, top: 82, position: 'absolute', color: 'black', fontSize: 40, fontFamily: 'Inter', fontWeight: '900', textTransform: 'uppercase', wordWrap: 'break-word'}}>Reservation</div>
       <div className='booking-card'>
-      <div style={{color: 'black', fontSize: 24, fontFamily: 'Inter', fontWeight: '900', textTransform: 'uppercase', wordWrap: 'break-word'}}>
+      <div style={{color: 'black', fontSize: 20, fontFamily: 'Inter', fontWeight: '900', textTransform: 'uppercase', wordWrap: 'break-word'}}>
       Equipment Reservation
       </div>
       <td>
-      <div style={{width: '100%', height: '100%', color: 'black', fontSize: 24, fontFamily: 'Inter', fontWeight: '500', textTransform: 'capitalize', wordWrap: 'break-word'}}>
+      <div style={{width: '100%', height: '100%', color: 'black', fontSize: 20, fontFamily: 'Inter', fontWeight: '500', textTransform: 'capitalize', wordWrap: 'break-word'}}>
         Date:
       </div>
       </td>
       <td>
       <CustomDatePicker setSelectedDate={setSelectedDate} />
       </td>
-      <div style={{width: '100%', height: '100%', color: 'black', fontSize: 24, fontFamily: 'Inter', fontWeight: '500', textTransform: 'capitalize', wordWrap: 'break-word'}}>
+      <div style={{width: '100%', height: '100%', color: 'black', fontSize: 20, fontFamily: 'Inter', fontWeight: '500', textTransform: 'capitalize', wordWrap: 'break-word'}}>
       <EquipmentPicker 
         setSelectedEquipmentNames={setSelectedEquipmentNames} 
         setGreatestTesterRequired={setGreatestTesterRequired}
       />
       </div>
-      <br />
-      <div style={{color: 'black', fontSize: 24, fontFamily: 'Inter', fontWeight: '900', textTransform: 'uppercase', wordWrap: 'break-word'}}>
+      <br/>
+      <div style={{color: 'black', fontSize: 20, fontFamily: 'Inter', fontWeight: '900', textTransform: 'uppercase', wordWrap: 'break-word'}}>
         Room Reservation
       </div>
-      <div style={{width: '100%', height: '100%', color: 'black', fontSize: 24, fontFamily: 'Inter', fontWeight: '500', textTransform: 'capitalize', wordWrap: 'break-word'}}>
+      <div style={{width: '100%', height: '100%', color: 'black', fontSize: 20, fontFamily: 'Inter', fontWeight: '500', textTransform: 'capitalize', wordWrap: 'break-word'}}>
       <UserRoomBooking 
         setSelectedRoom={setSelectedRoom} 
         setAttendees={setAttendees}

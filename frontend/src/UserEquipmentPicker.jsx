@@ -70,7 +70,6 @@ function UserEquipmentPicker({ setSelectedEquipmentNames, setGreatestTesterRequi
           )}
         </div>
       ))}
-      <br />
       <button onClick={addMoreSelections}>+ Add more</button>
     </div>
   );

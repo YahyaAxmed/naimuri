@@ -28,7 +28,7 @@ function Login({ onLogin }) {
         // console.log(storedUser);
 
         onLogin(); // Call the onLogin function passed as a prop
-        navigate('/dashboard');
+        navigate('/');
       } else {
         console.log('LOGIN FAILED');
         setError(message || 'Login failed');
@@ -78,7 +78,7 @@ function Login({ onLogin }) {
                 </label>
               
             </div>
-            <button type="submit" style={{left: 165, top: 110, position: 'absolute', color: 'black', fontSize: 20, fontFamily: 'Inter', fontWeight: '300', textTransform: 'uppercase', wordWrap: 'break-word', width: '30%', height: '18%', background: 'white', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius: 10}}>Login</button>
+            <button type="submit" style={{left: 225, top: 100, position: 'absolute', color: 'black', fontSize: 20, fontFamily: 'Inter', fontWeight: '300', textTransform: 'uppercase', wordWrap: 'break-word', width: '30%', height: '18%', background: 'white', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius: 10}}>Login</button>
             {error && <div>{error}</div>}
           </form>
         </div>  
