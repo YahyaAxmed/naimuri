@@ -71,8 +71,7 @@
 }
 
 button {
-  width: 30%;
-  height: 10%;
+  width: 40%;
   padding-left: 16px;
   padding-right: 16px;
   font-size: 16px;
@@ -83,6 +82,9 @@ button {
   gap: 8px;
   display: flex;
   align-items: center;
+  position: relative;
+  left: 50%;
+  transform: translate(-60%, 10%);
 }
 .center {
     position: relative;

@@ -131,11 +131,10 @@ function UserDashboard() {
                     </td>
                   </tr>
                 </table>
+                <Link to="/reservation">Modify</Link> {/* Use Link to navigate to UserReservation */}
                 <button onClick={() => handleCheckIn(reservation.id)}>
                   Check-In
                 </button>
-                
-            <Link to="/reservation">Modify</Link> {/* Use Link to navigate to UserReservation */}
               </>
             )}
             <button onClick={() => toggleDetails(reservation.id)}>
