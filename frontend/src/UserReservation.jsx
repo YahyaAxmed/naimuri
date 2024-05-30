@@ -91,6 +91,7 @@ function UserReservation() {
         setGreatestTesterRequired={setGreatestTesterRequired}
       />
       </div>
+      <br />
       <div style={{color: 'black', fontSize: 24, fontFamily: 'Inter', fontWeight: '900', textTransform: 'uppercase', wordWrap: 'break-word'}}>
         Room Reservation
       </div>
