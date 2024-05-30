@@ -1,5 +1,4 @@
 import React from 'react';
-import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react';
 import { BrowserRouter as Router, Route, Routes, Link, Navigate } from 'react-router-dom';
 
 // Import your tab content components

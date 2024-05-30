@@ -103,7 +103,20 @@ button {
     left:12px;
     position: relative
   }
-  
+
+  .booking-card {
+    margin: 20px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 20px;
+    background: #EDEDED;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    width: 342px;
+    top: 150px;
+    left:12px;
+    position: relative
+  }
   .dashboard-card h2 {
     margin: 0 0 10px;
   }

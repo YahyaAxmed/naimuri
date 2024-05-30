@@ -72,12 +72,29 @@ function UserReservation() {
 
   return (
     <div>
-      <h1>Reservation</h1>
+      <div style={{left: 43, top: 82, position: 'absolute', color: 'black', fontSize: 40, fontFamily: 'Inter', fontWeight: '900', textTransform: 'uppercase', wordWrap: 'break-word'}}>Reservation</div>
+      <div className='booking-card'>
+      <div style={{color: 'black', fontSize: 24, fontFamily: 'Inter', fontWeight: '900', textTransform: 'uppercase', wordWrap: 'break-word'}}>
+      Equipment Reservation
+      </div>
+      <td>
+      <div style={{width: '100%', height: '100%', color: 'black', fontSize: 24, fontFamily: 'Inter', fontWeight: '500', textTransform: 'capitalize', wordWrap: 'break-word'}}>
+        Date:
+      </div>
+      </td>
+      <td>
       <CustomDatePicker setSelectedDate={setSelectedDate} />
+      </td>
+      <div style={{width: '100%', height: '100%', color: 'black', fontSize: 24, fontFamily: 'Inter', fontWeight: '500', textTransform: 'capitalize', wordWrap: 'break-word'}}>
       <EquipmentPicker 
         setSelectedEquipmentNames={setSelectedEquipmentNames} 
         setGreatestTesterRequired={setGreatestTesterRequired}
       />
+      </div>
+      <div style={{color: 'black', fontSize: 24, fontFamily: 'Inter', fontWeight: '900', textTransform: 'uppercase', wordWrap: 'break-word'}}>
+        Room Reservation
+      </div>
+      <div style={{width: '100%', height: '100%', color: 'black', fontSize: 24, fontFamily: 'Inter', fontWeight: '500', textTransform: 'capitalize', wordWrap: 'break-word'}}>
       <UserRoomBooking 
         setSelectedRoom={setSelectedRoom} 
         setAttendees={setAttendees}
@@ -88,8 +105,10 @@ function UserReservation() {
         selectedEquipmentNames={selectedEquipmentNames} 
         greatestTesterRequired={greatestTesterRequired} 
       />
+      </div>
       <button onClick={handleBooking}>Book Now</button>
       {message && <p>{message}</p>}
+      </div>
     </div>
   );
 }
