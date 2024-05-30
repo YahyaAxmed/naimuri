@@ -134,13 +134,13 @@ function UserDashboard() {
                 <button onClick={() => handleCheckIn(reservation.id)}>
                   Check-In
                 </button>
+                
+            <Link to="/reservation">Modify</Link> {/* Use Link to navigate to UserReservation */}
               </>
             )}
             <button onClick={() => toggleDetails(reservation.id)}>
-              {visibleDetails[reservation.id] ? 'Hide Details' : 'Show Details'}
+              {visibleDetails[reservation.id] ? 'Close' : 'Details'}
             </button>
-            <br />
-            <Link to="/reservation">Modify</Link> {/* Use Link to navigate to UserReservation */}
           </div>
         ))
       ) : (
