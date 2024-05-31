@@ -41,6 +41,7 @@ PlaceHolder
 <h3>Step 1</h3>
 <p>Create a localhost database server
 <p>run naimuri.sql
+<p>Go to servre.js @backend and modify the password of your database
 <br/>
 <h3>Step 2</h3>
 <p>Install the packages
