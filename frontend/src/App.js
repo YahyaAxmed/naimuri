@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Login from './Login';
 import UserLayout from './UserLayout';
+
 import './App.css';
+
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -23,7 +25,7 @@ function App() {
   };
 
   return (
-    <Router>
+    <div className='App'>
       <Routes>
         <Route 
           path="/login" 
@@ -34,7 +36,9 @@ function App() {
           element={isAuthenticated ? <UserLayout /> : <Navigate to="/login" />} 
         />
       </Routes>
-    </Router>
+    {/* <UserLayout></UserLayout> */}
+    <Outlet/>
+    </div>
   );
 }
 

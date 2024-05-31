@@ -4,15 +4,16 @@ const path = require('path');
 const cors = require('cors');
 const app = express();
 const port = 7001;
-
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
+
 app.use(cors());
 
 // Create MySQL connection
 const con = mysql.createConnection({
     host: 'localhost',
     user: 'root',
+
     password: '19920531', // Change to your user password 
     database: 'Naimuri' // Change to your database name
 });
@@ -28,11 +29,12 @@ con.connect((err) => {
 
 // Middleware to parse request body
 app.use(express.json());
-
+app.use(cors());
 // Serve static files from the "public" directory
 app.use(express.static(path.join(__dirname, 'Public')));
 
 // Route to serve the login HTML page
+
 app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, 'Login.jsx'));
 });
@@ -277,6 +279,7 @@ const bookingDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
                 });
             }
         });
+
     });
 });
  

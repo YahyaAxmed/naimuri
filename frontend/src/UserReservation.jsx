@@ -1,9 +1,11 @@
+
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import CustomDatePicker from './UserDatePicker';
 import EquipmentPicker from './UserEquipmentPicker';
 import TotalEquipAndTester from './UserTotalEquipAndTester';
 import UserRoomBooking from './UserRoomBooking';
+
 import './App.css';
 
 function UserReservation() {
@@ -14,7 +16,6 @@ function UserReservation() {
   const [selectedRoom, setSelectedRoom] = useState(null);
   const [attendees, setAttendees] = useState(1);
   const [message, setMessage] = useState('');
-
   const teamId = localStorage.getItem('teamId');
 
   useEffect(() => {
@@ -46,6 +47,7 @@ function UserReservation() {
       attendees: parseInt(attendees),
       room_id: selectedRoom ? selectedRoom.id : null,
       team_id: teamId,
+
     };
 
     fetch('http://localhost:7001/api/reservation', {
@@ -111,9 +113,10 @@ function UserReservation() {
       </div>
       <button onClick={handleBooking}>Book Now</button>
       {message && <p>{message}</p>}
+
       </div>
     </div>
   );
 }
-
 export default UserReservation;
+
