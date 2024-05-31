@@ -25,28 +25,28 @@ PlaceHolder
 
 <h2>Program walk-through:</h2>
 
-<p align="center">
+<p align="left">
 Package Installed:
 <br/>
-node
-npm install react
-npm install react datepicker
-npm i body parser
-npm install react-router-dom
-npm install mysql2
-npm install cors
-npm install axios
+<p>node
+<p>npm install react
+<p>npm install react datepicker
+<p>npm i body parser
+<p>npm install react-router-dom
+<p>npm install mysql2
+<p>npm install cors
+<p>npm install axios
 <br/>
-Step 1
-Create a localhost database server
-run naimuri.sql
+<h3>Step 1</h3>
+<p>Create a localhost database server
+<p>run naimuri.sql
 <br/>
-step 2
-Install the packages
+<h3>Step 2</h3>
+<p>Install the packages
 <br/>
-Step 3
-npm start
-npm node server.js
+<h3>Step 3</h3>
+<p>npm start
+<p>npm node server.js
 
 
 <!--
