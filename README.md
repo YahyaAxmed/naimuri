@@ -3,7 +3,11 @@
  ### [YouTube Demonstration](https://)
 
 <h2>Description</h2>
-PlaceHolder
+<p>Our goal is to:
+<p>Develop an Booking Management System for clients handling hardware (servers, phones, network equipment, etc.)
+Stored in various facilities and rooms.
+<p>This system will streamline the process of booking, and managing hardware equipment and rooms
+<p>Ensuring that booking requirements are met efficiently.
 <br />
 
 
