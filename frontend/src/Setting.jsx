@@ -1,31 +1,17 @@
 import logo from './logo.svg';
 import React from 'react';
-import UserNav from './UserNav';
-import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
-
+import { BrowserRouter as Router, Route, Routes, Link, Navigate } from 'react-router-dom';
 //import './App.css';
 
 function Setting() {
   return (
-    <div className="bg-white flex flex-row justify-center w-full">
-      <div className="bg-white overflow-hidden w-[430px] h-[932px] relative">
-      <div className="absolute top-[81px] left-[43px] [font-family:'Inter-Black',Helvetica] font-black text-black text-[40px] tracking-[0] leading-[normal] whitespace-nowrap">
-        SETTING
+    <div>
+      <div style={{left: 43, top: 82, position: 'absolute', color: 'black', fontSize: 40, fontFamily: 'Inter', fontWeight: '900', textTransform: 'uppercase', wordWrap: 'break-word'}}>Setting</div>
+      <div style={{left: 44, top: 150, position: 'absolute', color: 'black', fontSize: 24, fontFamily: 'Inter', fontWeight: '300', textTransform: 'uppercase', wordWrap: 'break-word'}}>
+      <Link to="/Login">Logout</Link>
       </div>
-      <div className="absolute top-[164px] left-[44px] [font-family:'Inter-Light',Helvetica] font-light text-black text-[24px] tracking-[0] leading-[normal]">
-        CHANGE PASSWORD
-      </div>
-      <div className="absolute top-[208px] left-[44px] [font-family:'Inter-Light',Helvetica] font-light text-black text-[24px] tracking-[0] leading-[normal]">
-        LOGOUT
-        <br></br>
-        <TabGroup>
-        <UserNav></UserNav>
-        </TabGroup>
-      </div>
-      
-      </div>
-      
     </div>
+      
   );
 }
 

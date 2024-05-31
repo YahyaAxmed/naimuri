@@ -36,7 +36,6 @@ function UserRoomBooking({ setSelectedRoom, setAttendees, greatestTesterRequired
 
   return (
     <div>
-      <h2>Room Reservation</h2>
       <div>
         <label htmlFor="room">Room: </label>
         <select id="room" onChange={handleRoomChange} value={selectedRoomId}>

@@ -12,11 +12,11 @@ function UserDatePicker({ setSelectedDate }) {
 
   return (
     <div>
-      <h2>Equipment Reservation</h2>
-      <h2>Select Date</h2>
       <DatePicker
         selected={startDate}
         onChange={handleDateChange}
+        minDate={new Date()}
+        dateFormat='dd/MM/yyyy'
       />
     </div>
   );
