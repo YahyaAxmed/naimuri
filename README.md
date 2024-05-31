@@ -26,7 +26,7 @@ PlaceHolder
 <h2>Program walk-through:</h2>
 
 <p align="left">
-Package Installed:
+<h2>Package Installed:</h2>
 <br/>
 <p>node
 <p>npm install react
@@ -37,6 +37,7 @@ Package Installed:
 <p>npm install cors
 <p>npm install axios
 <br/>
+<h2>Running the Apps</h2>
 <h3>Step 1</h3>
 <p>Create a localhost database server
 <p>run naimuri.sql
