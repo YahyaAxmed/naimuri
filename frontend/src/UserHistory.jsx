@@ -46,21 +46,6 @@ function UserHistory() {
       {reservations.length > 0 ? (
         reservations.map((reservation) => (
           <div key={reservation.id} className={`reservation-card`}>
-            {/* <div style={{left: 20, top: 20, position: 'absolute', color: 'black', fontSize: 36, fontFamily: 'Inter', fontWeight: '900', textTransform: 'uppercase', wordWrap: 'break-word'}}>
-            <BookingDate bookingDate={reservation.bookingDate} />
-            </div>
-            <div style={{left: 70, top: 20, position: 'absolute', color: '#FF0000', fontSize: 36, fontFamily: 'Inter', fontWeight: '900', textTransform: 'uppercase', wordWrap: 'break-word'}}>
-            <BookingMonth  bookingMonth={reservation.bookingMonth} />
-            </div>
-            <div style={{left: 20, top: 70, position: 'absolute', color: 'black', fontSize: 24, fontFamily: 'Inter', fontWeight: '900', textTransform: 'uppercase', wordWrap: 'break-word'}}>
-            <BookingWeek  bookingWeek={reservation.bookingWeek} />
-            </div>
-            <div style={{textAlign: 'right', right:20, top:15 ,position: 'relative', color: 'black', fontSize: 20, fontFamily: 'Inter', fontWeight: '300', textTransform: 'uppercase', wordWrap: 'break-word'}}>
-            <BookingNumber bookingNumber={reservation.id} />
-            </div>
-            <div style={{textAlign: 'right', right:20, top:35 ,position: 'relative', color: 'black', fontSize: 15, fontFamily: 'Inter', fontWeight: '300', textTransform: 'capitalize', wordWrap: 'break-word'}}>
-            <BookingStatus bookingStatus={reservation.checked_in} />
-            </div> */}
             <table>
               <tr>
                 <td>
@@ -75,6 +60,11 @@ function UserHistory() {
                 </td>
                 <td> </td>
                 <td>
+                <div style={{color: 'black', fontSize: 24, fontFamily: 'Inter', fontWeight: '300', textTransform: 'uppercase', wordWrap: 'break-word'}}>
+                  #
+                </div>
+                </td>
+                <td>
                 <div style={{textAlign: 'left', color: 'black', fontSize: 24, fontFamily: 'Inter', fontWeight: '300', textTransform: 'capitalize', wordWrap: 'break-word'}}>
                 <BookingNumber bookingNumber={reservation.id} />
                 </div>  
@@ -87,6 +77,11 @@ function UserHistory() {
                 </div>
                 </td>
                 <td> </td>
+                <td>
+                <div style={{color: 'black', fontSize: 15, fontFamily: 'Inter', fontWeight: '300', textTransform: 'uppercase', wordWrap: 'break-word'}}>
+                  STATUS:
+                </div>
+                </td>
                 <td>
                 <div style={{color: 'black', fontSize: 15, fontFamily: 'Inter', fontWeight: '300', textTransform: 'uppercase', wordWrap: 'break-word'}}>
                 <BookingStatus bookingStatus={reservation.checked_in} />
