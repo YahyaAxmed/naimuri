@@ -37,7 +37,6 @@ function App() {
         />
       </Routes>
     {/* <UserLayout></UserLayout> */}
-    <Outlet/>
     </div>
   );
 }
