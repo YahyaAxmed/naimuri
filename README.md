@@ -3,7 +3,11 @@
  ### [YouTube Demonstration](https://)
 
 <h2>Description</h2>
-PlaceHolder
+<p>Our goal is to:
+<p>Develop an Booking Management System for clients handling hardware (servers, phones, network equipment, etc.)
+Stored in various facilities and rooms.
+<p>This system will streamline the process of booking, and managing hardware equipment and rooms
+<p>Ensuring that booking requirements are met efficiently.
 <br />
 
 
@@ -13,6 +17,9 @@ PlaceHolder
 - <b>HTML</b>
 - <b>CSS</b>
 - <b>React.js</b>
+- <b>Node.js</b>
+- <b>Express.js</b>
+- <b>mySQL2</b>
 
 <h2>Environments Used </h2>
 
@@ -22,34 +29,31 @@ PlaceHolder
 
 <h2>Program walk-through:</h2>
 
-<p align="center">
-Launch the utility: <br/>
-<img src="https://i.imgur.com/62TgaWL.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Select the disk:  <br/>
-<img src="https://i.imgur.com/tcTyMUE.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Enter the number of passes: <br/>
-<img src="https://i.imgur.com/nCIbXbg.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Confirm your selection:  <br/>
-<img src="https://i.imgur.com/cdFHBiU.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Wait for process to complete (may take some time):  <br/>
-<img src="https://i.imgur.com/JL945Ga.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Sanitization complete:  <br/>
-<img src="https://i.imgur.com/K71yaM2.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Observe the wiped disk:  <br/>
-<img src="https://i.imgur.com/AeZkvFQ.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
+<p align="left">
+<h2>Package Installed:</h2>
+<br/>
+<p>node
+<p>npm install react
+<p>npm install react datepicker
+<p>npm i body parser
+<p>npm install react-router-dom
+<p>npm install mysql2
+<p>npm install cors
+<p>npm install axios
+<br/>
+<h2>Running the Apps</h2>
+<h3>Step 1</h3>
+<p>Create a localhost database server
+<p>run naimuri.sql
+<p>Go to servre.js @backend and modify the password of your database
+<br/>
+<h3>Step 2</h3>
+<p>Install the packages
+<br/>
+<h3>Step 3</h3>
+<p>npm start
+<p>npm node server.js
+
 
 <!--
  ```diff
